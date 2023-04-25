@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Primary"
+    tools:context=".splash.IntroduceActivity">
+    
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_2"
+        android:layout_alignParentTop="true"
+      android:paddingVertical="90dp"
+        android:paddingHorizontal="60dp"
+        android:layout_above="@id/tv_gt_description_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gt_description_1"
+        android:text="@string/gt_description_1"
+        android:textSize="24dp"
+        android:padding="3dp"
+        android:layout_marginHorizontal="32dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:layout_above="@id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_marginTop="29dp"
+        android:layout_above="@+id/bt_arrow_right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bt_arrow_right"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="33dp"
+        android:drawableStart="@drawable/ic_arrow_right"
+        android:background="@drawable/bg_selector_arrow"
+        android:padding="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</RelativeLayout>

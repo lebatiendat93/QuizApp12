@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QuizApp</string>
+
+
+    <string name="gt_description_1">Tạo các câu đố được chơi\n game trở nên đơn giản</string>
+    <string name="gt_description_2">Tìm các câu đố để kiểm tra kiến\n thức của bạn</string>
+    <string name="gt_description_3">Tham gia thử thách cùng\n bạn bè</string>
+    <string name="gt_description_4">Tạo các câu đố được chơi\n game trở nên đơn giản</string>
+    <string name="lc_14_login_or_signup">Đăng nhập hoặc đăng ký</string>
+    <string name="lc_14_login_or_signup_description">Đăng nhập hoặc tạo tài khoản để làm bài kiểm tra, tham gia thử thách, v.v.</string>
+    <string name="lc_14_login">Đăng nhập</string>
+    <string name="lc_14_signup">Đăng kí</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
