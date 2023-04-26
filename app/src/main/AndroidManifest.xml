@@ -13,10 +13,10 @@
         android:theme="@style/Theme.QuizApp"
         tools:targetApi="31">
         <activity
-            android:name=".splash.IntroduceActivity"
+            android:name=".ui.splash.IntroduceActivity"
             android:exported="false" />
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

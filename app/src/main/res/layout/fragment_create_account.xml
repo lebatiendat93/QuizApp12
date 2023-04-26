@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:padding="16dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -22,7 +21,7 @@
             style="@style/style_size_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="86dp"
             android:fontFamily="@font/svn_gilroy_medium"
             android:text="@string/full_name" />
 
@@ -151,36 +150,38 @@
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_do_not_account"
-            style="@style/style_size_12"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_accept_policy_and_rules"
+            style="@style/style_medium_size_14"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
             android:layout_marginEnd="4dp"
-            android:text="@string/do_not_account" />
+            android:gravity="center"
+            android:text="@string/accept_policy_rules" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/layout_do_not_account"
+            android:id="@+id/layout_had_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="2dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_do_not_account"
+                android:id="@+id/tv_had_account"
                 style="@style/style_size_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text="@string/do_not_account" />
+                android:text="@string/had_account" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_signup_now"
+                android:id="@+id/tv_login_now"
                 style="@style/style_size_12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/signup_now"
+                android:text="@string/lc_14_login"
                 android:textColor="@color/Primary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

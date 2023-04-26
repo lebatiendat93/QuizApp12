@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.auth.LoginOrRegisterFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_forgot_pass"
+        style="@style/style_title_smbold_size_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:fontFamily="@font/svn_gilroy_bold"
+        android:text="@string/lc_14_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_label_email_or_phone"
+        style="@style/style_size_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title_forgot_pass"
+        android:layout_marginTop="86dp"
+        android:fontFamily="@font/svn_gilroy_medium"
+        android:text="@string/login_email_or_phone_number" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_email_or_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_label_email_or_phone"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_gray4_r8"
+        android:hint="@string/login_email_or_phone_number"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="13dp"
+        android:textColorHint="@color/Gray2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_login"
+        style="@style/style_medium_size_14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        android:background="@drawable/bg_bt_selected_r20"
+        android:text="@string/lc_14_send"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

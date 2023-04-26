@@ -1,4 +1,4 @@
-package jp.zyyx.favme.splash
+package jp.zyyx.favme.ui.splash
 
 import android.view.LayoutInflater
 import android.view.View

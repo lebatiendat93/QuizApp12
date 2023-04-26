@@ -1,4 +1,4 @@
-package jp.zyyx.favme.splash
+package jp.zyyx.favme.ui.splash
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

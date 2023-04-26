@@ -1,4 +1,4 @@
-package jp.zyyx.favme.auth
+package jp.zyyx.favme.ui.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import jp.zyyx.favme.R
 
 class LoginOrRegisterFragment : Fragment() {
+
 
 
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.auth.LoginOrRegisterFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_title_create_new_pass"
+        android:layout_marginTop="37dp"
+        style="@style/style_title_smbold_size_24"
+        android:text="@string/policy_and_rules"
+        android:fontFamily="@font/svn_gilroy_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_label_create_new_pass"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/tv_title_create_new_pass"
+        android:text="@string/policy_and_rules_guide"
+        style="@style/style_size_12"
+        android:fontFamily="@font/svn_gilroy_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_come_back"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
+        style="@style/style_medium_size_14"
+        android:background="@drawable/bg_bt_selected_r20"
+        android:text="@string/come_back"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

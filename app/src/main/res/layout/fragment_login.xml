@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/style_title_smbold_size_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:fontFamily="@font/svn_gilroy_bold"
+        android:text="@string/lc_14_login" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/style_size_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ed_email_or_phone"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/svn_gilroy_medium"
+        android:text="@string/login_email_or_phone_number" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_email_or_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_label_pass"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_gray4_r8"
+        android:hint="@string/login_email_or_phone_number"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="13dp"
+        android:textColorHint="@color/Gray2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_label_pass"
+        style="@style/style_size_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ed_pass"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/svn_gilroy_medium"
+        android:text="@string/all_password" />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ed_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_save_pass"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_gray4_r8"
+        android:drawableRight="@drawable/eyes_visibility_off"
+        android:drawableTint="@color/Gray2"
+        android:hint="@string/all_password"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="13dp"
+        android:textColorHint="@color/Gray2" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_save_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bt_login">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/save_pass" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_pass"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_login"
+        style="@style/style_medium_size_14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bt_login_google"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_bt_selected_r20"
+        android:text="@string/lc_14_login"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bt_login_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bt_login_facebook"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_stroke_accent2_selector_r100"
+        android:gravity="center"
+        android:paddingVertical="13dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/icons_google" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/style_size_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_google" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bt_login_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bt_login_apple_id"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_stroke_accent2_selector_r100"
+        android:gravity="center"
+        android:paddingVertical="13dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_facebook" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/style_size_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_facebook" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/bt_login_apple_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_do_not_account"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_stroke_accent2_selector_r100"
+        android:gravity="center"
+        android:paddingVertical="13dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_apple" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/style_size_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_apple_id" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_do_not_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_do_not_account"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/do_not_account" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_signup_now"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signup_now"
+            android:textColor="@color/Primary" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package jp.zyyx.favme.splash
+package jp.zyyx.favme.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         object : CountDownTimer (2000,2000) {
             override fun onTick(millisUntilFinished: Long) {
-                startActivity(Intent(this@SplashActivity,IntroduceActivity::class.java))
+                startActivity(Intent(this@SplashActivity, IntroduceActivity::class.java))
             }
 
             override fun onFinish() {
