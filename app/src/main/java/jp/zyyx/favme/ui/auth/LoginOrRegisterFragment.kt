@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import jp.zyyx.favme.R
 import jp.zyyx.favme.databinding.FragmentLoginBinding
+import jp.zyyx.favme.databinding.FragmentLoginOrRegisterBinding
 import jp.zyyx.favme.repository.AuthRepository
 import jp.zyyx.favme.ui.base.BaseFragment
 
-class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
+class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginOrRegisterBinding, AuthRepository>() {
     override fun getViewModel(): Class<AuthViewModel> {
         TODO("Not yet implemented")
     }
@@ -18,7 +19,7 @@ class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginBinding
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ): FragmentLoginBinding {
+    ): FragmentLoginOrRegisterBinding {
         TODO("Not yet implemented")
     }
 
