@@ -2,69 +2,43 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/Primary"
     android:padding="16dp">
 
     <ImageView
-        android:src="@drawable/picture_login_register"
         android:layout_weight="1"
+        android:src="@drawable/picture_login_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:padding="16dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/bg_white_r20"
-        android:orientation="vertical"
+        android:background="#336B8CC5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:gravity="center"
-            android:textSize="22dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/svn_gilroy_regular"
-            android:lineHeight="33dp"
-            android:textFontWeight="600"
-            android:text="@string/lc_14_login_or_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:textFontWeight="400"
-            android:textSize="14dp"
-            android:lineHeight="21dp"
-            android:text="@string/lc_14_login_or_signup_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_login"
             style="@style/style_medium_size_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/bg_bt_selected_r20"
             android:text="@string/lc_14_login"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_sign_in"
+            android:id="@+id/bt_sign_up"
             style="@style/style_medium_size_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="@drawable/bg_selector_bt_r20"
             android:text="@string/lc_14_signup"
             android:textColor="@color/Primary" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
