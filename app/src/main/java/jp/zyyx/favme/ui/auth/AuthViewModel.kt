@@ -1,5 +1,6 @@
 package jp.zyyx.favme.ui.auth
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,12 +18,15 @@ class AuthViewModel(
     val login: LiveData<Resource<LoginResponses>>
         get() = _login
 
-    suspend fun login(
+     fun login(
         email: String,
         password: String
     ) = viewModelScope.launch {
+         Log.e("DATA", "${_login.value}")
         _login.value = repository.login(email, password)
-
     }
+
+
+
 
 }

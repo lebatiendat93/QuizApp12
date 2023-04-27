@@ -53,6 +53,7 @@
         android:background="@drawable/bg_gray4_r8"
         android:drawableRight="@drawable/eyes_visibility_off"
         android:drawableTint="@color/Gray2"
+        android:inputType="textPassword"
         android:hint="@string/all_password"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"

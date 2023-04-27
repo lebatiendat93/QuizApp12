@@ -1,6 +1,9 @@
 package jp.zyyx.favme.model
 
 import androidx.annotation.Keep
+import jp.zyyx.favme.BuildConfig
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,10 +13,20 @@ class RemoteDataSource {
         private const val BASE_URL =
             "https://asia-northeast1-quiz-app-traning.cloudfunctions.net"
     }
+
     fun <Api> buildAPI(
         api: Class<Api>
     ): Api {
         return Retrofit.Builder()
+            .client(
+                OkHttpClient.Builder().also { client ->
+                    if (BuildConfig.DEBUG) {
+                        val logging =
+                            HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+                        client.addInterceptor(logging)
+                    }
+                }.build()
+            )
             .baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
             .create(api)
     }

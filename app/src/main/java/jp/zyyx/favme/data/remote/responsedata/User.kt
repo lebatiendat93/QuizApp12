@@ -1,4 +1,4 @@
-package jp.zyyx.favme.responses
+package jp.zyyx.favme.data.remote.responsedata
 
 data class User(
     val access_token : String,

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".ui.splash.SplashActivity">
+    tools:context=".ui.splash.SplashFragment">
 
     <ImageView
         android:id="@+id/imv_introduce"
