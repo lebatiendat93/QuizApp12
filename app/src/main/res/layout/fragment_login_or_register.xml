@@ -14,7 +14,8 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:padding="16dp"
-        android:background="#336B8CC5"
+        android:orientation="vertical"
+        android:background="@drawable/bg_white_r20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,10 +34,10 @@
             style="@style/style_medium_size_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_selector_bt_r20"
             android:layout_marginTop="32dp"
             android:text="@string/lc_14_signup"
             android:textColor="@color/Primary" />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
