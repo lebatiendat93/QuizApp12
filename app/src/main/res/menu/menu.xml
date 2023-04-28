@@ -10,6 +10,9 @@
         android:title="Them"
         android:icon="@drawable/ic_out"/>
 
+    <item android:id="@+id/placehoder"
+        android:title=""/>
+
     <item android:id="@+id/analysis"
         android:title="Home"
         android:icon="@drawable/icon_analysis"/>
