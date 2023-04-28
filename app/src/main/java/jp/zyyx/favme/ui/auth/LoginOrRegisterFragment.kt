@@ -38,7 +38,7 @@ class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginOrRegis
         binding.btLogin.setOnClickListener {
         }
 
-        binding.btSignIn.setOnClickListener {
+        binding.btSignUp.setOnClickListener {
 
         }
 

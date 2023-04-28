@@ -12,6 +12,7 @@ class LoginResponses(
     val message: String?= null
 ) : Parcelable
 
+
 @Keep
 @Parcelize
 class Result(
