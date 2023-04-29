@@ -56,15 +56,17 @@ class IntroduceFragment : Fragment() {
             when(binding.viewPager2.currentItem) {
                 0 -> binding.tvGtDescription1.text = getString(R.string.gt_description_1)
                 1 -> binding.tvGtDescription1.text = getString(R.string.gt_description_2)
-                2 -> binding.tvGtDescription1.text = getString(R.string.gt_description_3)
+                2 -> {
+                    binding.tvGtDescription1.text = getString(R.string.gt_description_3)
+                    binding.btArrowRight.setOnClickListener {
+                        (activity as MainActivity).replaceFragment(LoginOrRegisterFragment(), R.id.fragment_container)
+                    }
+                }
+
             }
         }
 
-        if (binding.viewPager2.currentItem == 2) {
-            binding.btArrowRight.setOnClickListener {
-                (activity as MainActivity).replaceFragment(LoginOrRegisterFragment(), R.id.fragment_container)
-            }
-        }
+
 
     }
 }

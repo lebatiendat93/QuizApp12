@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -51,13 +52,23 @@
         android:layout_above="@id/layout_save_pass"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
-        android:drawableRight="@drawable/eyes_visibility_off"
         android:drawableTint="@color/Gray2"
-        android:inputType="textPassword"
         android:hint="@string/all_password"
+        android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:textColorHint="@color/Gray2" />
+
+    <ImageView
+        android:id="@+id/img_eyes_show_or_hide_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ed_pass"
+        android:layout_alignEnd="@+id/ed_pass"
+        android:layout_alignBottom="@id/ed_pass"
+        android:paddingHorizontal="20dp"
+        android:src="@drawable/eyes_visibility_off"
+        app:tint="@color/Gray2" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layout_save_pass"

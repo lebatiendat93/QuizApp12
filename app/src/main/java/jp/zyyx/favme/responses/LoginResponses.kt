@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Keep
 @Parcelize
-class LoginResponses(
+data class LoginResponses(
     val statusCode: String,
     val result: Result,
     val message: String?= null
@@ -14,7 +14,7 @@ class LoginResponses(
 
 @Keep
 @Parcelize
-class Result(
+data class Result(
     val access_token: String,
     val user_id: Int,
     val status: Int? = null ,

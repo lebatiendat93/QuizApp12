@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        replaceFragment(SplashFragment(), R.id.fragment_container)
-        replaceFragment(LoginFragment(), R.id.fragment_container)
+        replaceFragment(SplashFragment(), R.id.fragment_container)
+//        replaceFragment(LoginFragment(), R.id.fragment_container)
 
     }
 }
