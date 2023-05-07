@@ -14,6 +14,8 @@
     <color name="Gray">#C4D0FB</color>
     <color name="Gray4">#DDDDDD</color>
     <color name="Gray2">#5C5C5C</color>
+    <color name="Gray3">#CCCCCC</color>
     <color name="Green">#8BC34A</color>
     <color name="Accent2">#C4D0FB</color>
+    <color name="color_red">#ff0000</color>
 </resources>

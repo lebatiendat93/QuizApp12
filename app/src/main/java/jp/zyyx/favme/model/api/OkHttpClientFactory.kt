@@ -14,7 +14,7 @@ class OkHttpClientFactory(accessToken: String? = null) {
         mAccessToken = accessToken
     }
 
-    fun create() : OkHttpClient {
+    fun create(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor { message ->
             Logger.printDebug("retrofit $message")
         }.apply {
@@ -22,11 +22,16 @@ class OkHttpClientFactory(accessToken: String? = null) {
         }
 
         val defaultClientBuilder = OkHttpClient().newBuilder()
-            .connectTimeout(15,TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
-            .writeTimeout(15,TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
+            .addInterceptor { chain ->
+                val requestBuilder = chain.request().newBuilder()
+                    .addHeader("Authorization", mAccessToken!!)
 
+                chain.proceed(requestBuilder.build())
+            }
         return defaultClientBuilder.build()
 
     }

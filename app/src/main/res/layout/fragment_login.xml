@@ -67,32 +67,36 @@
         android:layout_alignEnd="@+id/ed_pass"
         android:layout_alignBottom="@id/ed_pass"
         android:paddingHorizontal="20dp"
-        android:src="@drawable/eyes_visibility_off"
+        android:src="@drawable/eyes_visibility"
         app:tint="@color/Gray2" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:id="@+id/layout_save_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/bt_login">
 
         <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_save_pass"
             style="@style/style_size_12"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
+            android:checked="false"
             android:text="@string/save_pass" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="end |center"
+            android:paddingStart="16dp"
             android:text="@string/forgot_pass"
             android:textColor="@color/black"
             android:textSize="12dp"
             android:textStyle="bold" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_login"
@@ -101,7 +105,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/bt_login_google"
         android:layout_marginTop="32dp"
-        android:background="@drawable/bg_bt_selected_r20"
+        android:enabled="false"
+        android:background="@drawable/bg_selector_bt_r20"
         android:text="@string/lc_14_login"
         android:textColor="@color/white" />
 
@@ -159,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/layout_do_not_account"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_stroke_accent2_selector_r100"
         android:gravity="center"
         android:paddingVertical="13dp">
@@ -183,7 +188,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -191,15 +195,18 @@
             android:id="@+id/tv_do_not_account"
             style="@style/style_size_12"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:layout_marginEnd="4dp"
             android:text="@string/do_not_account" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_signup_now"
             style="@style/style_size_12"
+            android:paddingVertical="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingEnd="16dp"
             android:text="@string/signup_now"
             android:textColor="@color/Primary" />
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,47 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-   <androidx.viewpager2.widget.ViewPager2
-       android:id="@+id/view_pager_2"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+    <FrameLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_app_bar"
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </FrameLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/layout_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_height="100dp">
 
         <com.google.android.material.bottomappbar.BottomAppBar
+            app:backgroundTint="@color/Primary"
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
-            app:hideOnScroll="false"
-            android:background="@drawable/bg_bottom_app_bar"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="20dp"
             app:fabCradleVerticalOffset="10dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_transparent"
-                app:itemIconTint="@drawable/bg_icon_selector"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
                 app:menu="@menu/menu" />
         </com.google.android.material.bottomappbar.BottomAppBar>
 

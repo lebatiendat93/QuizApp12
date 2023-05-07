@@ -7,12 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import jp.zyyx.favme.MainActivity
+import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
+import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentSplashBinding
+import jp.zyyx.favme.extension.handleReplace
 import jp.zyyx.favme.extension.replaceFragment
+import jp.zyyx.favme.navigation.ScreenType
+import jp.zyyx.favme.ui.auth.LoginFragment
+import jp.zyyx.favme.ui.auth.LoginOrRegisterFragment
 import jp.zyyx.favme.ui.splash.IntroduceFragment
 
-class   SplashFragment : Fragment() {
+class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
@@ -35,12 +41,33 @@ class   SplashFragment : Fragment() {
             }
 
             override fun onFinish() {
-                (activity as MainActivity).replaceFragment(
-                    IntroduceFragment(), R.id.fragment_container
-                )
+                if (!MySharePreference.getInstance().getFirstStartApp()) {
+                    requireActivity().replaceFragment(
+                        IntroduceFragment(), R.id.fragment_container,
+                        ScreenType.SplashFlow.Introduce.name
+                    )
+                    MySharePreference.getInstance().setFirstStartApp(true)
+                } else {
+                    if (MySharePreference.isLogin()) {
+                        requireActivity().replaceFragment(
+                            MainFragment(), R.id.fragment_container,
+                            ScreenType.AuthFlow.MainFragment.name
+                        )
+                    } else {
+                        requireActivity().replaceFragment(
+                            LoginFragment(), R.id.fragment_container,
+                            ScreenType.AuthFlow.Login.name
+                        )
+                    }
+                }
             }
         }.start()
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

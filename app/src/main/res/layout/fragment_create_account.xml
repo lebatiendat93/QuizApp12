@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -37,6 +39,17 @@
             android:textColorHint="@color/Gray2" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_name"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/request_enter_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/style_size_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,6 +69,17 @@
             android:textColorHint="@color/Gray2" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_email"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/request_enter_correct_format_email"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
             style="@style/style_size_12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,9 +94,22 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_gray4_r8"
             android:hint="@string/enter_phone"
+            android:inputType="number"
+            android:maxLength="10"
             android:paddingHorizontal="20dp"
             android:paddingVertical="13dp"
             android:textColorHint="@color/Gray2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_phone"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/please_enter_phone_number"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/style_size_12"
@@ -82,16 +119,39 @@
             android:fontFamily="@font/svn_gilroy_medium"
             android:text="@string/birth_day" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/ed_enter_birthday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_gray4_r8"
-            android:hint="@string/enter_birth_day"
+<!--        <androidx.appcompat.widget.AppCompatEditText-->
+<!--            android:id="@+id/ed_enter_birthday"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:background="@drawable/bg_gray4_r8"-->
+<!--            android:hint="@string/enter_birth_day"-->
+<!--            android:paddingHorizontal="20dp"-->
+<!--            android:paddingVertical="13dp"-->
+<!--            android:textColorHint="@color/Gray2" />-->
+<!--        -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_enter_birthday"
             android:paddingHorizontal="20dp"
             android:paddingVertical="13dp"
-            android:textColorHint="@color/Gray2" />
+            android:layout_marginTop="12dp"
+            android:text="@string/enter_birth_day"
+            android:textColor="@color/Gray2"
+            android:textSize="18dp"
+            android:background="@drawable/bg_gray4_r8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_birth_day"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/please_enter_birthday"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_label_pass"
@@ -103,18 +163,46 @@
             android:text="@string/all_password" />
 
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/ed_pass"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_gray4_r8"
+                android:drawableTint="@color/Gray2"
+                android:hint="@string/all_password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="13dp"
+                android:textColorHint="@color/Gray2" />
+
+            <ImageView
+                android:id="@+id/img_eyes_show_or_hide_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/ed_pass"
+                android:layout_alignEnd="@+id/ed_pass"
+                android:layout_alignBottom="@id/ed_pass"
+                android:paddingHorizontal="20dp"
+                android:src="@drawable/eyes_visibility"
+                app:tint="@color/Gray2" />
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_pass"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_gray4_r8"
-            android:drawableRight="@drawable/eyes_visibility_off"
-            android:drawableTint="@color/Gray2"
-            android:hint="@string/all_password"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="13dp"
-            android:textColorHint="@color/Gray2" />
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/pass_must_than_6_word"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_label_enter_the_pass"
@@ -125,19 +213,47 @@
             android:fontFamily="@font/svn_gilroy_medium"
             android:text="@string/enter_the_password" />
 
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/ed_enter_the_pass"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_enter_the_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_gray4_r8"
+                android:drawableTint="@color/Gray2"
+                android:hint="@string/all_password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="13dp"
+                android:textColorHint="@color/Gray2" />
+
+            <ImageView
+                android:id="@+id/img_eyes_show_or_hide_pass_again"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/ed_enter_the_pass"
+                android:layout_alignEnd="@+id/ed_enter_the_pass"
+                android:layout_alignBottom="@+id/ed_enter_the_pass"
+                android:paddingHorizontal="20dp"
+                android:src="@drawable/eyes_visibility"
+                app:tint="@color/Gray2" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notice_enter_confirm_pass"
+            style="@style/style_size_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_gray4_r8"
-            android:drawableRight="@drawable/eyes_visibility_off"
-            android:drawableTint="@color/Gray2"
-            android:hint="@string/all_password"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="13dp"
-            android:textColorHint="@color/Gray2" />
+            android:visibility="gone"
+            android:textColor="@color/color_red"
+            android:fontFamily="@font/svn_gilroy_medium"
+            android:text="@string/pass_and_confirm_pass_do_not_same"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_register"
@@ -145,7 +261,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="@drawable/bg_bt_selected_r20"
+            android:enabled="false"
+            android:background="@drawable/bg_selector_bt_r20"
             android:text="@string/lc_14_signup"
             android:textColor="@color/white" />
 
@@ -164,29 +281,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="2dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_had_account"
                 style="@style/style_size_12"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginEnd="4dp"
                 android:text="@string/had_account" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_login_now"
                 style="@style/style_size_12"
+                android:paddingVertical="8dp"
+                android:paddingEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lc_14_login"
                 android:textColor="@color/Primary" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

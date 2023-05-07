@@ -1,9 +1,8 @@
-package jp.zyyx.favme.ui.base
+package jp.zyyx.favme.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import jp.zyyx.favme.repository.AuthRepository
-import jp.zyyx.favme.repository.BaseRepository
 import jp.zyyx.favme.ui.auth.AuthViewModel
 
 class ViewModelFactory(

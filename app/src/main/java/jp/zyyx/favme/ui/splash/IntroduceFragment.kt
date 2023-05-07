@@ -8,8 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import jp.zyyx.favme.MainActivity
 import jp.zyyx.favme.R
+import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentIntroduceBinding
+import jp.zyyx.favme.extension.handleReplace
 import jp.zyyx.favme.extension.replaceFragment
+import jp.zyyx.favme.navigation.ScreenType
+import jp.zyyx.favme.ui.auth.LoginFragment
 import jp.zyyx.favme.ui.auth.LoginOrRegisterFragment
 
 class IntroduceFragment : Fragment() {
@@ -34,6 +38,7 @@ class IntroduceFragment : Fragment() {
     }
 
     private fun initView() {
+
         imageList = ArrayList()
         imageList.add(R.drawable.picture_introduce_1)
         imageList.add(R.drawable.picture_introduce_2)
@@ -59,14 +64,16 @@ class IntroduceFragment : Fragment() {
                 2 -> {
                     binding.tvGtDescription1.text = getString(R.string.gt_description_3)
                     binding.btArrowRight.setOnClickListener {
-                        (activity as MainActivity).replaceFragment(LoginOrRegisterFragment(), R.id.fragment_container)
+                        requireActivity().replaceFragment(LoginOrRegisterFragment(), R.id.fragment_container, ScreenType.AuthFlow.LoginOrRegister.name)
                     }
                 }
 
             }
         }
+    }
 
-
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

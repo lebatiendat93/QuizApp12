@@ -1,17 +1,16 @@
 package jp.zyyx.favme.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import jp.zyyx.favme.MainActivity
 import jp.zyyx.favme.R
-import jp.zyyx.favme.databinding.FragmentLoginBinding
 import jp.zyyx.favme.databinding.FragmentLoginOrRegisterBinding
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.repository.AuthRepository
-import jp.zyyx.favme.ui.base.BaseFragment
+import jp.zyyx.favme.base.BaseFragment
+import jp.zyyx.favme.navigation.ScreenType
 
 class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginOrRegisterBinding, AuthRepository>() {
 
@@ -39,11 +38,11 @@ class LoginOrRegisterFragment : BaseFragment<AuthViewModel, FragmentLoginOrRegis
     private fun initView() {
 
         binding.btLogin.setOnClickListener {
-            (activity as MainActivity).replaceFragment(LoginFragment(), R.id.fragment_container)
+            requireActivity().replaceFragment(LoginFragment(), R.id.fragment_container, ScreenType.AuthFlow.Login.name)
         }
 
         binding.btSignUp.setOnClickListener {
-            (activity as MainActivity).replaceFragment(SignInFragment(), R.id.fragment_container)
+            requireActivity().replaceFragment(SignInFragment(), R.id.fragment_container, ScreenType.AuthFlow.SignIn.name)
         }
 
     }

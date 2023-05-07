@@ -31,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="35dp"
         style="@style/style_medium_size_14"
-        android:background="@drawable/bg_bt_selected_r20"
+        android:background="@drawable/bg_selector_bt_r20"
         android:text="@string/come_back"
         android:textColor="@color/white"
         android:layout_width="match_parent"
