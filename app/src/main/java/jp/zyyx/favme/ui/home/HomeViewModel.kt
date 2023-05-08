@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import jp.zyyx.favme.data.remote.requestparam.ListDepartmentInfoRequest
 import jp.zyyx.favme.data.remote.requestparam.LoginRequest
 import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
 import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.LoginResponses
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
 import jp.zyyx.favme.model.ModelException
@@ -21,11 +23,15 @@ class HomeViewModel(
     private val repository: HomeRepository
 ) : ViewModel() {
 
-    private val _getDepartment: MutableLiveData<ResourceNew<GetDepartmentResponses>> = MutableLiveData()
+    private val _getDepartment: MutableLiveData<ResourceNew<GetDepartmentResponses>> =
+        MutableLiveData()
     val getDepartment: LiveData<ResourceNew<GetDepartmentResponses>>
         get() = _getDepartment
 
-
+    private val _listDepartmentInfo: MutableLiveData<ResourceNew<ListDepartmentInfoResponses>> =
+        MutableLiveData()
+    val listDepartmentInfo: LiveData<ResourceNew<ListDepartmentInfoResponses>>
+        get() = _listDepartmentInfo
 
     fun getDepartment(
         header: String,
@@ -41,6 +47,18 @@ class HomeViewModel(
             }
     }
 
+    fun listDepartmentInfo(
+        header: String,
+        userId: Int
+    ) = viewModelScope.launch {
+        repository.listDepartmentInfo(header, userId).onStart { ResourceNew.Loading }
+            .catch { error ->
+                _listDepartmentInfo.value = ResourceNew.Error(error as ModelException)
+            }
+            .collect {
+                _listDepartmentInfo.value = ResourceNew.Success(it)
+            }
+    }
 
 
 }

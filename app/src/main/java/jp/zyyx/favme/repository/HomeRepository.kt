@@ -2,9 +2,11 @@ package jp.zyyx.favme.repository
 
 import jp.zyyx.favme.base.Repository
 import jp.zyyx.favme.data.remote.requestparam.GetDepartmentRequest
+import jp.zyyx.favme.data.remote.requestparam.ListDepartmentInfoRequest
 import jp.zyyx.favme.data.remote.requestparam.LoginRequest
 import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
 import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.LoginResponses
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
 import jp.zyyx.favme.model.RemoteDataApiNew
@@ -28,6 +30,22 @@ class HomeRepository(
             try {
                 val getDepartmentRequest = GetDepartmentRequest(userId, keyword)
                 val responses = api.getDepartmentList(header, getDepartmentRequest)
+                emit(responses)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                e.catchCommonErrors()
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun listDepartmentInfo(
+        header: String,
+        userId: Int
+    ): Flow<ListDepartmentInfoResponses> {
+        return flow {
+            try {
+                val listDepartmentInfoRequest = ListDepartmentInfoRequest(userId)
+                val responses = api.listDepartmentInfo(header, listDepartmentInfoRequest)
                 emit(responses)
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -2,9 +2,11 @@ package jp.zyyx.favme.model
 
 import androidx.annotation.Keep
 import jp.zyyx.favme.data.remote.requestparam.GetDepartmentRequest
+import jp.zyyx.favme.data.remote.requestparam.ListDepartmentInfoRequest
 import jp.zyyx.favme.data.remote.requestparam.LoginRequest
 import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
 import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.LoginResponses
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
 import jp.zyyx.favme.model.api.APIClientFactory
@@ -54,9 +56,14 @@ interface RemoteDataApiNew {
     suspend fun getDepartmentList(
         @Header ("Authorization") header: String,
         @Body getDepartmentRequest : GetDepartmentRequest
-//        @Query ("user_id") userId: Int,
-//        @Query ("keyword") keyword: String,
     ): GetDepartmentResponses
+
+    @POST("/listDepartmentInfo")
+    suspend fun listDepartmentInfo(
+        @Header ("Authorization") header: String,
+        @Body listDepartmentInfoRequest : ListDepartmentInfoRequest
+    ): ListDepartmentInfoResponses
+
 
 
 }

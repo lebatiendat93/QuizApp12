@@ -27,10 +27,7 @@ class SystemFragment : Fragment() {
 
     private var _binding: FragmentSystemBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -82,17 +79,14 @@ class SystemFragment : Fragment() {
                         200 -> {
                             getDepartmentAdapter.differ.submitList(it.data.result)
                         }
-
                         400 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
                                 .show()
                         }
-
                         401 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
                                 .show()
                         }
-
                         500 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
                                 .show()
