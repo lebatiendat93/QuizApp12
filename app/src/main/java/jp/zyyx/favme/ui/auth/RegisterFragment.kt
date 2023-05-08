@@ -13,10 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentCreateAccountBinding
-import jp.zyyx.favme.extension.replaceFragment
-import jp.zyyx.favme.extension.setOnClickPreventingDouble
-import jp.zyyx.favme.extension.toast
-import jp.zyyx.favme.extension.visible
+import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.api.Resource
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.repository.AuthRepository
@@ -24,7 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class SignInFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding, AuthRepository>() {
+class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding, AuthRepository>() {
 
     override fun getViewModel() = AuthViewModel::class.java
 
@@ -53,7 +50,7 @@ class SignInFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding,
 
         binding.tvLoginNow.setOnClickListener {
             requireActivity().replaceFragment(
-                LoginFragment(),
+                LoginFragmentNew(),
                 R.id.fragment_container,
                 ScreenType.AuthFlow.Login.name
             )
@@ -96,12 +93,12 @@ class SignInFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding,
             pass = binding.edPass.text.toString().trim()
             enterThePass = binding.edEnterThePass.text.toString().trim()
 
-            binding.tvNoticeEnterPass.visible(false)
-            binding.tvNoticeEnterPhone.visible(false)
-            binding.tvNoticeEnterEmail.visible(false)
-            binding.tvNoticeEnterName.visible(false)
-            binding.tvNoticeEnterBirthDay.visible(false)
-            binding.tvNoticeEnterConfirmPass.visible(false)
+            binding.tvNoticeEnterPass.gone()
+            binding.tvNoticeEnterPhone.gone()
+            binding.tvNoticeEnterEmail.gone()
+            binding.tvNoticeEnterName.gone()
+            binding.tvNoticeEnterBirthDay.gone()
+            binding.tvNoticeEnterConfirmPass.gone()
 
             handleLogicRegister(email, phone, name, birthday, pass, enterThePass)
         }
@@ -116,7 +113,7 @@ class SignInFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding,
                     Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_LONG).show()
                     Log.e("Register", it.value.toString())
                     requireActivity().replaceFragment(
-                        LoginFragment(),
+                        LoginFragmentNew(),
                         R.id.fragment_container,
                         ScreenType.AuthFlow.Login.name
                     )
@@ -201,27 +198,27 @@ class SignInFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding,
         } else {
             if (!email.contains("@gmail.com")) {
                 requireContext().toast(getString(R.string.request_enter_correct_format_email))
-                binding.tvNoticeEnterEmail.visible(true)
+                binding.tvNoticeEnterEmail.visible()
                 return
             } else {
                 if (phone.length != 10) {
                     requireContext().toast(getString(R.string.please_enter_phone_number))
-                    binding.tvNoticeEnterPhone.visible(true)
+                    binding.tvNoticeEnterPhone.visible()
                     return
                 } else {
                     if (birthday == getString(R.string.enter_birth_day)) {
                         requireContext().toast(getString(R.string.please_enter_birthday))
-                        binding.tvNoticeEnterBirthDay.visible(true)
+                        binding.tvNoticeEnterBirthDay.visible()
                         return
                     } else {
                         if (pass.length < 7) {
                             requireContext().toast(getString(R.string.pass_must_than_6_word))
-                            binding.tvNoticeEnterPass.visible(true)
+                            binding.tvNoticeEnterPass.visible()
                             return
                         } else {
                             if (pass != enterThePass) {
                                 requireContext().toast(getString(R.string.pass_and_confirm_pass_do_not_same))
-                                binding.tvNoticeEnterConfirmPass.visible(true)
+                                binding.tvNoticeEnterConfirmPass.visible()
                                 return
                             } else {
                                 viewModel.register(email, name, phone, birthday, pass)

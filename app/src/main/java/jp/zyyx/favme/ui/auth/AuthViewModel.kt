@@ -6,15 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import jp.zyyx.favme.data.remote.requestparam.LoginRequest
-import jp.zyyx.favme.model.api.Resource
-import jp.zyyx.favme.repository.AuthRepository
 import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
 import jp.zyyx.favme.data.remote.responses.LoginResponses
-import jp.zyyx.favme.data.remote.responses.LoginResponsesModel
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
-import kotlinx.coroutines.Dispatchers
+import jp.zyyx.favme.model.api.Resource
+import jp.zyyx.favme.repository.AuthRepository
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AuthViewModel(
     private val repository: AuthRepository
@@ -39,9 +36,10 @@ class AuthViewModel(
         val startTime = System.currentTimeMillis()
         val loginRequest = LoginRequest(email, password)
         _login.postValue(repository.login(loginRequest))
+
         val time = System.currentTimeMillis() - startTime
         Log.e("TIME", time.toString())
-        Log.e("TIME1",Thread.currentThread().name)
+        Log.e("TIME1", Thread.currentThread().name)
 
     }
 

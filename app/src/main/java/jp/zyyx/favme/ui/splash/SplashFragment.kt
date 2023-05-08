@@ -15,6 +15,7 @@ import jp.zyyx.favme.extension.handleReplace
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.auth.LoginFragment
+import jp.zyyx.favme.ui.auth.LoginFragmentNew
 import jp.zyyx.favme.ui.auth.LoginOrRegisterFragment
 import jp.zyyx.favme.ui.splash.IntroduceFragment
 
@@ -55,7 +56,7 @@ class SplashFragment : Fragment() {
                         )
                     } else {
                         requireActivity().replaceFragment(
-                            LoginFragment(), R.id.fragment_container,
+                            LoginFragmentNew(), R.id.fragment_container,
                             ScreenType.AuthFlow.Login.name
                         )
                     }

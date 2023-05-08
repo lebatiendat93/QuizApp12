@@ -38,9 +38,9 @@ sealed class ScreenType : Parcelable {
         }
 
         @Parcelize
-        object SignIn : AuthFlow() {
+        object Register : AuthFlow() {
             override val name: String
-                get() = "Sign In Fragment"
+                get() = "Register Fragment"
         }
 
 

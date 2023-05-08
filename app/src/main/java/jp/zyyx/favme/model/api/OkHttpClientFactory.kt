@@ -28,7 +28,9 @@ class OkHttpClientFactory(accessToken: String? = null) {
             .addInterceptor(loggingInterceptor)
             .addInterceptor { chain ->
                 val requestBuilder = chain.request().newBuilder()
-                    .addHeader("Authorization", mAccessToken!!)
+                if (mAccessToken != null) {
+                    requestBuilder.header("authorization", mAccessToken!!)
+                }
 
                 chain.proceed(requestBuilder.build())
             }
