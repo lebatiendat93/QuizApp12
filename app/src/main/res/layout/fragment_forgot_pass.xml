@@ -37,11 +37,11 @@
         android:hint="@string/login_email_or_phone_number"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
-        android:textColorHint="@color/Gray2" />
+        android:textColorHint="@color/color_gray2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_login"
-        style="@style/style_medium_size_14"
+        style="@style/style_bt_medium_size_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

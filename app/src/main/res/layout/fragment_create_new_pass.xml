@@ -35,11 +35,11 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
         android:drawableRight="@drawable/eyes_visibility_off"
-        android:drawableTint="@color/Gray2"
+        android:drawableTint="@color/color_gray2"
         android:hint="@string/enter_the_password"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
-        android:textColorHint="@color/Gray2" />
+        android:textColorHint="@color/color_gray2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_enter_new_pass"
@@ -60,15 +60,15 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
         android:drawableRight="@drawable/eyes_visibility_off"
-        android:drawableTint="@color/Gray2"
+        android:drawableTint="@color/color_gray2"
         android:hint="@string/enter_new_password"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
-        android:textColorHint="@color/Gray2" />
+        android:textColorHint="@color/color_gray2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_login"
-        style="@style/style_medium_size_14"
+        style="@style/style_bt_medium_size_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

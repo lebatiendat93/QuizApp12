@@ -9,13 +9,14 @@
     <color name="white">#FFFFFFFF</color>
 
 
-
-    <color name="Primary">#639CFD</color>
-    <color name="Gray">#C4D0FB</color>
-    <color name="Gray4">#DDDDDD</color>
-    <color name="Gray2">#5C5C5C</color>
-    <color name="Gray3">#CCCCCC</color>
-    <color name="Green">#8BC34A</color>
-    <color name="Accent2">#C4D0FB</color>
+    <color name="color_purple">#6A5AE0</color>
+    <color name="color_primary">#639CFD</color>
+    <color name="color_gray">#C4D0FB</color>
+    <color name="color_gray4">#DDDDDD</color>
+    <color name="color_gray2">#5C5C5C</color>
+    <color name="color_gray3">#CCCCCC</color>
+    <color name="color_gray5">#EFEEFC</color>
+    <color name="color_green">#8BC34A</color>
+    <color name="color_accent2">#C4D0FB</color>
     <color name="color_red">#ff0000</color>
 </resources>

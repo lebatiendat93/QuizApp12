@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_solid_white_stroke_2_gray5_r20"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/img_faculty"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_faculty_of_science" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_faculty_name"
+        style="@style/style_text_medium_size_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/img_faculty"
+        tools:text="Khoa tự nhiên" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_subject_name"
+        style="@style/style_text_regular_size_12"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_faculty_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@id/img_faculty"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Toán, Sinh, Lý, Hoá..." />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/img_faculty"
+        android:layout_alignBottom="@+id/img_faculty"
+        android:layout_alignParentEnd="true"
+        android:paddingHorizontal="16dp"
+        android:paddingEnd="8dp"
+        android:src="@drawable/ic_arrow" />
+
+</RelativeLayout>

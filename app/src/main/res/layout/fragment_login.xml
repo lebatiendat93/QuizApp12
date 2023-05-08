@@ -32,7 +32,7 @@
         android:hint="@string/login_email_or_phone_number"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
-        android:textColorHint="@color/Gray2" />
+        android:textColorHint="@color/color_gray2" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_pass"
@@ -52,12 +52,12 @@
         android:layout_above="@id/layout_save_pass"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
-        android:drawableTint="@color/Gray2"
+        android:drawableTint="@color/color_gray2"
         android:hint="@string/all_password"
         android:inputType="textPassword"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
-        android:textColorHint="@color/Gray2" />
+        android:textColorHint="@color/color_gray2" />
 
     <ImageView
         android:id="@+id/img_eyes_show_or_hide_pass"
@@ -68,7 +68,7 @@
         android:layout_alignBottom="@id/ed_pass"
         android:paddingHorizontal="20dp"
         android:src="@drawable/eyes_visibility"
-        app:tint="@color/Gray2" />
+        app:tint="@color/color_gray2" />
 
     <LinearLayout
         android:id="@+id/layout_save_pass"
@@ -100,7 +100,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_login"
-        style="@style/style_medium_size_14"
+        style="@style/style_bt_medium_size_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/bt_login_google"
@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
             android:text="@string/signup_now"
-            android:textColor="@color/Primary" />
+            android:textColor="@color/color_primary" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

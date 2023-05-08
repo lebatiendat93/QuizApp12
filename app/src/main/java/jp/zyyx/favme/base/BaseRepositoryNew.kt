@@ -2,6 +2,7 @@ package jp.zyyx.favme.base
 
 import jp.zyyx.favme.model.RemoteDataApiNew
 import jp.zyyx.favme.repository.AuthRepositoryNew
+import jp.zyyx.favme.repository.HomeRepository
 
 class BaseRepositoryNew(
     private val remoteDataAPINew: RemoteDataApiNew
@@ -9,6 +10,7 @@ class BaseRepositoryNew(
 
     companion object {
         private var authRepository: AuthRepositoryNew? = null
+        private var homeRepository: HomeRepository? = null
     }
 
     override fun <T : Repository?> create(modelClass: Class<T>): T {
@@ -18,6 +20,13 @@ class BaseRepositoryNew(
                     authRepository = AuthRepositoryNew(remoteDataAPINew)
                 }
                 authRepository as T
+            }
+
+            modelClass.isAssignableFrom(HomeRepository::class.java) -> {
+                if (homeRepository == null) {
+                    homeRepository = HomeRepository(remoteDataAPINew)
+                }
+                homeRepository as T
             }
             else -> throw ClassNotFoundException()
         }
