@@ -1,24 +1,19 @@
-package jp.zyyx.favme.ui.home.system
+package jp.zyyx.favme.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import jp.zyyx.favme.R
-import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.ResultGetDepartment
 import jp.zyyx.favme.databinding.ItemFacultyBinding
-import okhttp3.internal.wait
 
 class GetDepartmentAdapter : RecyclerView.Adapter<GetDepartmentAdapter.GetDepartmentViewHolder>() {
 
     private lateinit var binding: ItemFacultyBinding
 
     var onItemClickListener: ((item: ResultGetDepartment) -> Unit)? = null
-
 
     private val differCallBack = object : DiffUtil.ItemCallback<ResultGetDepartment>() {
         override fun areItemsTheSame(

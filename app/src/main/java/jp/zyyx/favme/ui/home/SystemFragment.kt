@@ -1,48 +1,31 @@
-package jp.zyyx.favme.ui.home.system
+package jp.zyyx.favme.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import jp.zyyx.favme.MainFragment
-import jp.zyyx.favme.R
+import jp.zyyx.favme.base.BaseFragmentNew
 import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentSystemBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
-import jp.zyyx.favme.extension.gone
-import jp.zyyx.favme.extension.replaceFragment
-import jp.zyyx.favme.extension.visible
-import jp.zyyx.favme.model.RemoteDataApiNew
 import jp.zyyx.favme.model.ResourceNew
 import jp.zyyx.favme.model.ViewModelFactoryNew
-import jp.zyyx.favme.navigation.ScreenType
-import jp.zyyx.favme.ui.home.HomeViewModel
 
-class SystemFragment : Fragment() {
+class SystemFragment : BaseFragmentNew<FragmentSystemBinding>() {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactoryNew.create() }
-
-    private var _binding: FragmentSystemBinding? = null
-    private val binding get() = _binding!!
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
 
-    override fun onCreateView(
+    override fun getFragmentBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSystemBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+        container: ViewGroup?
+    ) = FragmentSystemBinding.inflate(inflater, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         initView()
         handleObservable()
 
@@ -100,8 +83,4 @@ class SystemFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

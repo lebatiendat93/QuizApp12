@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_lable_hello"
+        android:id="@+id/tv_label_hello"
         style="@style/style_size_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         style="@style/style_title_smbold_size_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_lable_hello"
+        android:layout_below="@id/tv_label_hello"
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:letterSpacing="0.016"
@@ -118,49 +118,60 @@
         android:background="@drawable/bg_white_top_r32"
         android:paddingHorizontal="24dp">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            app:tabMode="scrollable"
+      <androidx.appcompat.widget.LinearLayoutCompat
+          android:id="@+id/layout_system_user"
+          android:layout_marginTop="20dp"
+          android:orientation="horizontal"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <androidx.appcompat.widget.AppCompatTextView
+              style="@style/style_text_regular_size_14"
+              android:text="@string/system"
+              android:gravity="center"
+              android:layout_weight="1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+          <androidx.appcompat.widget.AppCompatTextView
+              style="@style/style_text_regular_size_14"
+              android:text="@string/user"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+      </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title_faculty_list"
+            style="@style/style_text_medium_size_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0C092A"
+            android:layout_below="@id/layout_system_user"
             android:layout_marginTop="20dp"
+            android:text="@string/faculty_list" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_see_all"
+            style="@style/style_text_medium_size_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_system_user"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/see_all"
+            android:textColor="@color/color_purple" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_department_list"
+            android:layout_marginTop="16dp"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_faculty"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_below="@id/tab_layout"
-            android:id="@+id/view_pager_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-<!--        <androidx.appcompat.widget.AppCompatTextView-->
-<!--            android:id="@+id/tv_title_faculty_list"-->
-<!--            style="@style/style_text_medium_size_20"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="#0C092A"-->
-<!--            android:layout_below="@id/view_pager_2"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="@string/faculty_list" />-->
-
-<!--        <androidx.appcompat.widget.AppCompatTextView-->
-<!--            android:id="@+id/tv_see_all"-->
-<!--            style="@style/style_text_medium_size_14"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/view_pager_2"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:text="@string/see_all"-->
-<!--            android:textColor="@color/color_purple" />-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            tools:itemCount="5"-->
-<!--            tools:listitem="@layout/item_faculty"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@+id/tv_title_faculty_list" />-->
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title_faculty_list" />
 
     </RelativeLayout>
 
