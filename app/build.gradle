@@ -71,4 +71,7 @@ dependencies {
     // material Design support library - androidx
     implementation 'com.google.android.material:material:1.9.0-alpha02'
 
+
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
 }

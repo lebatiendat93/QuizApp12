@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/bg_white_top_r32"
+        android:paddingHorizontal="24dp">
+
+
+
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tv_title_faculty_list"-->
+<!--            style="@style/style_text_medium_size_20"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="#0C092A"-->
+<!--            android:layout_below="@id/view_pager_2"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="@string/faculty_list" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tv_see_all"-->
+<!--            style="@style/style_text_medium_size_14"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/view_pager_2"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:text="@string/see_all"-->
+<!--            android:textColor="@color/color_purple" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            tools:itemCount="5"-->
+<!--            tools:listitem="@layout/item_faculty"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tv_title_faculty_list" />-->
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

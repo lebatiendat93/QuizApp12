@@ -21,7 +21,7 @@
         android:layout_height="100dp">
 
         <com.google.android.material.bottomappbar.BottomAppBar
-            app:backgroundTint="@color/Primary"
+            app:backgroundTint="@color/color_primary"
             android:id="@+id/bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -9,19 +9,19 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import jp.zyyx.favme.base.BaseFragmentNew
 import jp.zyyx.favme.data.local.MySharePreference
-import jp.zyyx.favme.databinding.FragmentHomeBinding
+import jp.zyyx.favme.databinding.FragmentSystemBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.model.ResourceNew
 import jp.zyyx.favme.model.ViewModelFactoryNew
 
-class HomeFragment : BaseFragmentNew<FragmentHomeBinding>() {
+class SystemFragment : BaseFragmentNew<FragmentSystemBinding>() {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactoryNew.create() }
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentHomeBinding.inflate(inflater, container , false)
+    ) = FragmentSystemBinding.inflate(inflater, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,9 +46,8 @@ class HomeFragment : BaseFragmentNew<FragmentHomeBinding>() {
         getDepartmentAdapter.onItemClickListener = {
 
         }
-
-
     }
+
     private fun handleObservable() {
         viewModel.getDepartment.observe(viewLifecycleOwner) {
             when (it) {
@@ -83,4 +82,5 @@ class HomeFragment : BaseFragmentNew<FragmentHomeBinding>() {
         }
 
     }
+
 }

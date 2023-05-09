@@ -114,6 +114,7 @@ class LoginFragmentNew : Fragment() {
                             RemoteDataApiNew.applyAccessToken(it.data.result.access_token)
                             MySharePreference.getInstance()
                                 .setAccessToken(it.data.result.access_token)
+                            MySharePreference.getInstance().setUserId(it.data.result.user_id)
                             Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG)
                                 .show()
 

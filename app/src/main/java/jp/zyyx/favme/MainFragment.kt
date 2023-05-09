@@ -4,12 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import jp.zyyx.favme.databinding.FragmentMainBinding
 import jp.zyyx.favme.ui.account.AccountFragment
 import jp.zyyx.favme.ui.analysis.AnalysisFragment
@@ -32,9 +28,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initView()
-
     }
 
     private fun initView() {
@@ -48,8 +42,8 @@ class MainFragment : Fragment() {
             AccountFragment()
         )
 
-        val viewPagerAdapter = ViewPagerAdapter(fragment, this)
-        binding.viewPager2.adapter = viewPagerAdapter
+        val viewPager2Adapter = ViewPager2Adapter(fragment, this)
+        binding.viewPager2.adapter = viewPager2Adapter
 
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
