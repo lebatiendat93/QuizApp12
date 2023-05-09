@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,10 +16,7 @@ import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentLoginBinding
-import jp.zyyx.favme.extension.gone
-import jp.zyyx.favme.extension.replaceFragment
-import jp.zyyx.favme.extension.setOnClickPreventingDouble
-import jp.zyyx.favme.extension.visible
+import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.RemoteDataApiNew
 import jp.zyyx.favme.model.ResourceNew
 import jp.zyyx.favme.model.ViewModelFactoryNew
@@ -31,6 +29,12 @@ class LoginFragmentNew : Fragment() {
         FragmentLoginBinding.inflate(
             layoutInflater
         )
+    }
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            requireActivity().popBackStack()
+        }
     }
 
     private var savePass = ""
