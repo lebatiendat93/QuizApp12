@@ -15,14 +15,14 @@ import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentLoginBinding
 import jp.zyyx.favme.extension.*
-import jp.zyyx.favme.model.RemoteDataApiNew
+import jp.zyyx.favme.model.RemoteDataApi
 import jp.zyyx.favme.model.Resource
-import jp.zyyx.favme.model.ViewModelFactoryNew
+import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.navigation.ScreenType
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    private val viewModel: AuthViewModel by viewModels { ViewModelFactoryNew.create() }
+    private val viewModel: AuthViewModel by viewModels { ViewModelFactory.create() }
 
     private var savePass = ""
     private var emailOrPhone = ""
@@ -95,7 +95,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     binding.pgLoading.gone()
                     when (it.data.statusCode) {
                         200 -> {
-                            RemoteDataApiNew.applyAccessToken(it.data.result.access_token)
+                            RemoteDataApi.applyAccessToken(it.data.result.access_token)
                             MySharePreference.getInstance()
                                 .setAccessToken(it.data.result.access_token)
                             MySharePreference.getInstance().setUserId(it.data.result.user_id)

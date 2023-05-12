@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="86dp"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/full_name" />
+                android:text="@string/dk_22_name" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/ed_enter_full_name"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_gray4_r8"
-                android:hint="@string/enter_full_name"
+                android:hint="@string/dk_22_name_hint"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="13dp"
                 android:textColorHint="@color/color_gray2" />
@@ -50,7 +50,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/request_enter_name"/>
+                android:text="@string/notice_request_enter_name"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/style_size_12"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/email" />
+                android:text="@string/dk_22_email" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/ed_enter_email"
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_gray4_r8"
-                android:hint="@string/enter_email"
+                android:hint="@string/dk_22_email_hint"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="13dp"
                 android:textColorHint="@color/color_gray2" />
@@ -80,7 +80,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/request_enter_correct_format_email"/>
+                android:text="@string/notice_request_enter_correct_format_email"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/style_size_12"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/phone_number" />
+                android:text="@string/dk_22_phone" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/ed_enter_phone"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_gray4_r8"
-                android:hint="@string/enter_phone"
+                android:hint="@string/dk_22_phone_hint"
                 android:inputType="number"
                 android:maxLength="10"
                 android:paddingHorizontal="20dp"
@@ -112,7 +112,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/please_enter_phone_number"/>
+                android:text="@string/notice_please_enter_phone_number"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/style_size_12"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/birth_day" />
+                android:text="@string/dk_22_birthday" />
 
             <!--        <androidx.appcompat.widget.AppCompatEditText-->
             <!--            android:id="@+id/ed_enter_birthday"-->
@@ -138,7 +138,7 @@
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="13dp"
                 android:layout_marginTop="12dp"
-                android:text="@string/enter_birth_day"
+                android:text="@string/dk_22_birthday_hint"
                 android:textColor="@color/color_gray2"
                 android:textSize="18dp"
                 android:background="@drawable/bg_gray4_r8"
@@ -154,7 +154,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/please_enter_birthday"/>
+                android:text="@string/notice_please_enter_birthday"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_label_pass"
@@ -205,7 +205,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/pass_must_than_6_word"/>
+                android:text="@string/notice_pass_must_than_6_word"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_label_enter_the_pass"
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/enter_the_password" />
+                android:text="@string/dk_22_password_confirm" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -256,7 +256,7 @@
                 android:visibility="gone"
                 android:textColor="@color/color_red"
                 android:fontFamily="@font/svn_gilroy_medium"
-                android:text="@string/pass_and_confirm_pass_do_not_same"/>
+                android:text="@string/notice_pass_and_confirm_pass_do_not_same"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_register"
@@ -266,7 +266,7 @@
                 android:layout_marginTop="32dp"
                 android:enabled="false"
                 android:background="@drawable/bg_bt_selector_r20"
-                android:text="@string/lc_14_signup"
+                android:text="@string/all_label_signup"
                 android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -277,7 +277,7 @@
                 android:layout_marginTop="51dp"
                 android:layout_marginEnd="4dp"
                 android:gravity="center"
-                android:text="@string/accept_policy_rules" />
+                android:text="@string/dk_22_term" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/layout_had_account"
@@ -294,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="4dp"
-                    android:text="@string/had_account" />
+                    android:text="@string/dk_22_has_account" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_login_now"
@@ -303,7 +303,7 @@
                     android:paddingEnd="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lc_14_login"
+                    android:text="@string/all_label_login"
                     android:textColor="@color/color_primary" />
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>

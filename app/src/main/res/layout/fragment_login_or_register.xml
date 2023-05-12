@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
             android:background="@drawable/bg_bt_selected_r20"
-            android:text="@string/lc_14_login"
+            android:text="@string/all_label_login"
             android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bt_white_r20"
             android:layout_marginTop="16dp"
-            android:text="@string/lc_14_signup"
+            android:text="@string/all_label_signup"
             android:textColor="@color/color_primary" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

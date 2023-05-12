@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:fontFamily="@font/svn_gilroy_bold"
-        android:text="@string/lc_14_login" />
+        android:text="@string/all_label_login" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_email_or_phone"
@@ -25,7 +25,7 @@
         android:layout_below="@+id/tv_title_forgot_pass"
         android:layout_marginTop="86dp"
         android:fontFamily="@font/svn_gilroy_medium"
-        android:text="@string/login_email_or_phone_number" />
+        android:text="@string/all_label_email_or_phone" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/ed_email_or_phone"
@@ -34,7 +34,7 @@
         android:layout_below="@+id/tv_label_email_or_phone"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
-        android:hint="@string/login_email_or_phone_number"
+        android:hint="@string/all_label_email_or_phone"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:textColorHint="@color/color_gray2" />

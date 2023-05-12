@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentLoginOrRegisterBinding
@@ -19,10 +20,17 @@ class LoginOrRegisterFragment : BaseFragment<FragmentLoginOrRegisterBinding>() {
     ) = FragmentLoginOrRegisterBinding.inflate(inflater, container, false)
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed(
+                ) {
+
+                }
+            })
     }
 
     private fun initView() {
@@ -43,6 +51,11 @@ class LoginOrRegisterFragment : BaseFragment<FragmentLoginOrRegisterBinding>() {
             )
         }
 
+    }
+
+    fun onBackClick(): Boolean {
+        //This method handle onBackPressed()! return true or false
+        return false
     }
 
 

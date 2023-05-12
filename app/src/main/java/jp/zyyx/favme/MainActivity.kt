@@ -12,10 +12,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         replaceFragment(SplashFragment(), R.id.fragment_container, ScreenType.SplashFlow.Splash.name)
-//        replaceFragment(LoginFragment(), R.id.fragment_container)
-
-
-
 
     }
 }

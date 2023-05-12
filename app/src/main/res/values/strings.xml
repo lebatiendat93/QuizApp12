@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">QuizApp</string>
-    <string name="hello">Xin Chào</string>
 
+
+    <string name="all_label_email_or_phone">Email hoặc số điện thoại</string>
+    <string name="all_label_login">Đăng nhập</string>
+    <string name="all_label_signup">Đăng kí</string>
+    <string name="all_ok">Đồng ý</string>
+    <string name="all_cancel">Huỷ</string>
 
     <string name="gt_description_1">Tạo các câu đố được chơi\n game trở nên đơn giản</string>
     <string name="gt_description_2">Tìm các câu đố để kiểm tra kiến\n thức của bạn</string>
@@ -9,53 +14,73 @@
     <string name="gt_description_4">Tạo các câu đố được chơi\n game trở nên đơn giản</string>
     <string name="lc_14_login_or_signup">Đăng nhập hoặc đăng ký</string>
     <string name="lc_14_login_or_signup_description">Đăng nhập hoặc tạo tài khoản để làm bài kiểm\n tra, tham gia thử thách, v.v.</string>
-    <string name="lc_14_login">Đăng nhập</string>
-    <string name="lc_14_signup">Đăng kí</string>
     <string name="lc_14_send">Gửi</string>
-    <string name="login_email_or_phone_number">Email hoặc số điện thoại</string>
     <string name="all_password">Mật khẩu</string>
-    <string name="save_pass">Nhớ mật khẩu</string>
-    <string name="forgot_pass"><u>Quên mật khẩu</u></string>
-    <string name="login_facebook">Đăng nhập bằng Facebook</string>
-    <string name="login_google">Đăng nhập bằng Google</string>
-    <string name="login_apple_id">Đăng nhập bằng Apple ID</string>
-    <string name="come_back">Trở lại</string>
+    <string name="dn_21_save_pwd">Nhớ mật khẩu</string>
+    <string name="dn_21_forgot_pwd"><u>Quên mật khẩu</u></string>
+    <string name="dn_21_btn_login_via_facebook">Đăng nhập bằng Facebook</string>
+    <string name="dn_21_btn_login_via_google">Đăng nhập bằng Google</string>
+    <string name="dn_21_btn_login_via_apple">Đăng nhập bằng Apple ID</string>
 
-    <string name="do_not_account">Không có tài khoản?</string>
-    <string name="had_account">Đã có tài khoản?</string>
-    <string name="signup_now">Đăng ký ngay</string>
+
+    <string name="dn_21_no_account">Không có tài khoản?</string>
+    <string name="dn_21_create_account">Đăng ký ngay</string>
     <string name="create_account">Tạo tài khoản</string>
-    <string name="full_name">Họ tên</string>
-    <string name="enter_full_name">Nhập họ tên</string>
-    <string name="email">Email</string>
-    <string name="enter_email">Nhập email</string>
-    <string name="phone_number">Số điện thoại</string>
-    <string name="enter_phone">Nhập số điện thoại</string>
-    <string name="birth_day">Sinh nhật</string>
-    <string name="enter_birth_day">Nhập sinh nhật</string>
-    <string name="enter_the_password">Nhập lại mật khẩu</string>
-    <string name="accept_policy_rules">Bằng cách nhấp vào đăng ký, bạn đồng ý với <b>Điều\n khoản</b> và <b>Điều kiện Sử dụng</b> của chúng tôi</string>
-    <string name="create_new_password">Tạo mật khẩu mới</string>
-    <string name="new_password">Mật khẩu mới</string>
-    <string name="enter_new_password">Nhập lại mật khẩu mới</string>
-    <string name="policy_and_rules">Điều khoản và\n điều kiện sử dụng</string>
-    <string name="policy_and_rules_guide">Quyền Sở Hữu Trí Tuệ: tất cả các sáng chế, quyền đối với các phát minh, giải pháp hữu ích, bản quyền và các quyền liên quan, nhãn hiệu hàng hóa, nhãn hiệu dịch vụ, tên thương mại, tên kinh doanh và tên miền, quyền đối với hình dáng sản phẩm hoặc kiểu dáng thương mại, quyền về danh tiếng hoặc quyền khởi kiện về sự giả mạo, quyền về cạnh tranh không lành mạnh, quyền về thiết kế, quyền đối với phần mềm tin học, quyền cơ sở dữ liệu, quyền đối với thiết kế bố trí mạch tích hợp, quyền về đạo đức, quyền đối với thông tin bảo mật (bao gồm bí quyết và bí mật kinh doanh) và bất kỳ quyền sở hữu trí tuệ nào khác, trong mỗi trường hợp dù có đăng ký hay không và bao gồm các đơn và gia hạn, đòi lại hoặc mở rộng các quyền này, và mọi quyền hoặc hình thức bảo hộ tương tự hoặc tương đương tại bất cứ nơi nào trên thế giới.</string>
+    <string name="dk_22_name">Họ tên</string>
+    <string name="dk_22_name_hint">Nhập họ tên</string>
+    <string name="dk_22_email">Email</string>
+    <string name="dk_22_email_hint">Nhập email</string>
+    <string name="dk_22_phone">Số điện thoại</string>
+    <string name="dk_22_phone_hint">Nhập số điện thoại</string>
+    <string name="dk_22_birthday">Sinh nhật</string>
+    <string name="dk_22_birthday_hint">Nhập sinh nhật</string>
+    <string name="dk_22_password_confirm">Nhập lại mật khẩu</string>
+    <string name="dk_22_term">Bằng cách nhấp vào đăng ký, bạn đồng ý với <b>Điều\n khoản</b> và <b>Điều kiện Sử dụng</b> của chúng tôi</string>
+    <string name="dk_22_has_account">Đã có tài khoản?</string>
 
-    <string name="request_input_full_information">Yêu cầu nhập đầy đủ thông tin bên trên</string>
-    <string name="please_enter_phone_number">Yêu cầu nhập số điện thoại</string>
-    <string name="please_enter_birthday">Yêu cầu nhập ngày sinh của bạn</string>
-    <string name="pass_must_than_6_word">Mật khẩu phải dài hơn 6 ký tự, mời nhập lại</string>
-    <string name="request_enter_correct_format_email">Yêu cầu nhập đúng định đang của email</string>
-    <string name="request_enter_name">Yêu cầu nhập tên đăng ký</string>
-    <string name="pass_and_confirm_pass_do_not_same">Mật khẩu và mật khẩu xác nhận không giống nhau</string>
-    <string name="outstanding">Nổi bật</string>
-    <string name="solving_questions">Tham gia giải bài tập \n với nhiều dạng đề khác \n nhau từ mọi người</string>
-    <string name="find_id">Tìm ID</string>
-    <string name="system">Hệ thống</string>
-    <string name="user">Người dùng</string>
-    <string name="faculty_list">Danh sách khoa</string>
+    <string name="fp_23_title">Quên mật khẩu</string>
+
+
+    <string name="fp_24_title">Tạo mật khẩu mới</string>
+    <string name="fp_24_label_new_password">Mật khẩu mới</string>
+    <string name="fp_24_label_confirm_password">Nhập lại mật khẩu mới</string>
+    <string name="fp_24_btn_update_password">Đặt lại mật khẩu</string>
+
+    <string name="dk_25_title">Điều khoản và\n điều kiện sử dụng</string>
+    <string name="dk_25_content">Quyền Sở Hữu Trí Tuệ: tất cả các sáng chế, quyền đối với các phát minh, giải pháp hữu ích, bản quyền và các quyền liên quan, nhãn hiệu hàng hóa, nhãn hiệu dịch vụ, tên thương mại, tên kinh doanh và tên miền, quyền đối với hình dáng sản phẩm hoặc kiểu dáng thương mại, quyền về danh tiếng hoặc quyền khởi kiện về sự giả mạo, quyền về cạnh tranh không lành mạnh, quyền về thiết kế, quyền đối với phần mềm tin học, quyền cơ sở dữ liệu, quyền đối với thiết kế bố trí mạch tích hợp, quyền về đạo đức, quyền đối với thông tin bảo mật (bao gồm bí quyết và bí mật kinh doanh) và bất kỳ quyền sở hữu trí tuệ nào khác, trong mỗi trường hợp dù có đăng ký hay không và bao gồm các đơn và gia hạn, đòi lại hoặc mở rộng các quyền này, và mọi quyền hoặc hình thức bảo hộ tương tự hoặc tương đương tại bất cứ nơi nào trên thế giới.</string>
+    <string name="fp_25_btn_back">Trở lại</string>
+
+    <string name="home_31_welcome">Xin Chào</string>
+    <string name="home_31_Outstanding">Nổi bật</string>
+    <string name="home_31_desc">Tham gia giải bài tập \n với nhiều dạng đề khác \n nhau từ mọi người</string>
+    <string name="home_31_findID">Tìm ID</string>
+    <string name="home_31_from_system">Hệ thống</string>
+    <string name="home_31_from_user">Người dùng</string>
+    <string name="home_31_faculty_list">Danh sách khoa</string>
+    <string name="home_31_view_all">Xem tất cả</string>
+
+    <string name="tk_32_title">Danh mục</string>
+    <string name="tk_32_search_hint">Câu đố, danh mục hoặc bạn bè</string>
+    <string name="tk_32_suggestion">Gợi ý</string>
+    <string name="tk_32_X_question">Câu đố</string>
+
+    <string name="tk_33_title">Tìm kiếm</string>
+    <string name="tk_33_last_query">Tìm kiếm gần đây</string>
+    <string name="tk_33_remove_all">Xóa tất cả</string>
+
+
+
+    <string name="notice_request_input_full_information">Yêu cầu nhập đầy đủ thông tin bên trên</string>
+    <string name="notice_please_enter_phone_number">Yêu cầu nhập số điện thoại đủ 10 số</string>
+    <string name="notice_please_enter_birthday">Yêu cầu nhập ngày sinh của bạn</string>
+    <string name="notice_pass_must_than_6_word">Mật khẩu phải dài hơn 6 ký tự và có ít nhất một chữ in hoa</string>
+    <string name="notice_request_enter_correct_format_email">Yêu cầu nhập đúng định đang của email</string>
+    <string name="notice_request_enter_name">Yêu cầu nhập tên đăng ký</string>
+    <string name="notice_pass_and_confirm_pass_do_not_same">Mật khẩu và mật khẩu xác nhận không giống nhau</string>
     <string name="subject_list">Danh sách môn</string>
-    <string name="see_all">Xem tất cả</string>
+    <string name="exit_screen">Thoát màn hình</string>
+    <string name="do_you_exit_screen">Bạn có muốn thoát không?</string>
+
 
 
 </resources>

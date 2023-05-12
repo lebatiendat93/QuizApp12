@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import jp.zyyx.favme.R
@@ -15,7 +16,7 @@ import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentCreateAccountBinding
 import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.Resource
-import jp.zyyx.favme.model.ViewModelFactoryNew
+import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.navigation.ScreenType
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,14 +24,15 @@ import java.util.*
 
 class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
 
-    private val viewModel: AuthViewModel by viewModels { ViewModelFactoryNew.create() }
+    private val viewModel: AuthViewModel by viewModels { ViewModelFactory.create() }
 
-    private var name = ""
+    private var userName = ""
     private var email = ""
     private var phone = ""
     private var birthday = ""
     private var pass = ""
-    private var enterThePass = ""
+    private var confirmPass = ""
+
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
@@ -41,6 +43,21 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleObservable()
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed(
+                ) {
+                    if (!binding.btRegister.isEnabled) {
+                        requireActivity().popBackStack()
+                    } else {
+                        dialogWarningBack {
+                            requireActivity().popBackStack()
+                        }
+                    }
+                }
+            })
+
     }
 
     private fun initView() {
@@ -61,25 +78,45 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
         binding.edEnterEmail.doOnTextChanged { _, _, _, _ ->
             email = binding.edEnterEmail.text.toString().trim()
             checkEnableBtSignup()
+            if (validEmail()) {
+                binding.tvNoticeEnterEmail.visible()
+            } else {
+                binding.tvNoticeEnterEmail.gone()
+            }
         }
 
         binding.edEnterPhone.doOnTextChanged { _, _, _, _ ->
             phone = binding.edEnterPhone.text.toString().trim()
             checkEnableBtSignup()
+            if (validPhoneNumber()) {
+                binding.tvNoticeEnterPhone.visible()
+            } else {
+                binding.tvNoticeEnterPhone.gone()
+            }
         }
 
         binding.edPass.doOnTextChanged { _, _, _, _ ->
             pass = binding.edPass.text.toString().trim()
             checkEnableBtSignup()
+            if (validPassword()) {
+                binding.tvNoticeEnterPass.visible()
+            } else {
+                binding.tvNoticeEnterPass.gone()
+            }
         }
 
         binding.edEnterThePass.doOnTextChanged { _, _, _, _ ->
-            enterThePass = binding.edEnterThePass.text.toString().trim()
+            confirmPass = binding.edEnterThePass.text.toString().trim()
             checkEnableBtSignup()
+            if (validEnterPassword()) {
+                binding.tvNoticeEnterConfirmPass.visible()
+            } else {
+                binding.tvNoticeEnterConfirmPass.gone()
+            }
         }
 
         binding.edEnterFullName.doOnTextChanged { _, _, _, _ ->
-            name = binding.edEnterFullName.text.toString().trim()
+            userName = binding.edEnterFullName.text.toString().trim()
             checkEnableBtSignup()
         }
 
@@ -88,10 +125,10 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
 
             email = binding.edEnterEmail.text.toString().trim()
             phone = binding.edEnterPhone.text.toString().trim()
-            name = binding.edEnterFullName.text.toString().trim()
+            userName = binding.edEnterFullName.text.toString().trim()
             birthday = binding.tvEnterBirthday.text.toString().trim()
             pass = binding.edPass.text.toString().trim()
-            enterThePass = binding.edEnterThePass.text.toString().trim()
+            confirmPass = binding.edEnterThePass.text.toString().trim()
 
             binding.tvNoticeEnterPass.gone()
             binding.tvNoticeEnterPhone.gone()
@@ -100,11 +137,12 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
             binding.tvNoticeEnterBirthDay.gone()
             binding.tvNoticeEnterConfirmPass.gone()
 
-            handleLogicRegister(email, phone, name, birthday, pass, enterThePass)
+            handleLogicRegister(email, phone, userName, birthday, pass, confirmPass)
         }
 
 
     }
+
 
     private fun handleObservable() {
         viewModel.register.observe(viewLifecycleOwner) {
@@ -112,41 +150,37 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
                 is Resource.Success -> {
                     binding.pgLoading.gone()
                     when (it.data.statusCode) {
-                            200 -> {
-                            Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_LONG).show()
+                        200 -> {
+                            requireContext().longToast("Register Success")
                             requireActivity().replaceFragment(
                                 LoginFragment(),
                                 R.id.fragment_container,
                                 ScreenType.AuthFlow.Login.name
                             )
                         }
-
                         400 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
 
                         401 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
 
                         500 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
                     }
 
-
                 }
                 is Resource.Error -> {
+                    binding.pgLoading.gone()
                     Toast.makeText(requireContext(), "Failed Register", Toast.LENGTH_LONG).show()
                 }
                 is Resource.Loading -> {
-
+                    binding.pgLoading.gone()
                 }
                 else -> {
-
+                    binding.pgLoading.gone()
                 }
             }
         }
@@ -207,7 +241,7 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
 
     private fun checkEnableBtSignup() {
         binding.btRegister.isEnabled =
-            !(name.isEmpty() || email.isEmpty() || phone.isEmpty() || pass.isEmpty() || enterThePass.isEmpty())
+            !(userName.isEmpty() || email.isEmpty() || phone.isEmpty() || pass.isEmpty() || confirmPass.isEmpty())
     }
 
     private fun handleLogicRegister(
@@ -218,32 +252,33 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
         pass: String,
         enterThePass: String
     ) {
+        binding.pgLoading.gone()
         if (email.isEmpty() || phone.isEmpty() || name.isEmpty() || birthday.isEmpty() || pass.isEmpty() || enterThePass.isEmpty()) {
-            requireContext().toast(getString(R.string.request_input_full_information))
+            requireContext().longToast(getString(R.string.notice_request_input_full_information))
             return
         } else {
-            if (!email.contains("@gmail.com")) {
-                requireContext().toast(getString(R.string.request_enter_correct_format_email))
+            if (validEmail()) {
+                requireContext().longToast(getString(R.string.notice_request_enter_correct_format_email))
                 binding.tvNoticeEnterEmail.visible()
                 return
             } else {
-                if (phone.length != 10) {
-                    requireContext().toast(getString(R.string.please_enter_phone_number))
+                if (validPhoneNumber()) {
+                    requireContext().longToast(getString(R.string.notice_please_enter_phone_number))
                     binding.tvNoticeEnterPhone.visible()
                     return
                 } else {
-                    if (birthday == getString(R.string.enter_birth_day)) {
-                        requireContext().toast(getString(R.string.please_enter_birthday))
+                    if (birthday == getString(R.string.dk_22_birthday_hint)) {
+                        requireContext().longToast(getString(R.string.notice_please_enter_birthday))
                         binding.tvNoticeEnterBirthDay.visible()
                         return
                     } else {
-                        if (pass.length < 7) {
-                            requireContext().toast(getString(R.string.pass_must_than_6_word))
+                        if (validPassword()) {
+                            requireContext().longToast(getString(R.string.notice_pass_must_than_6_word))
                             binding.tvNoticeEnterPass.visible()
                             return
                         } else {
-                            if (pass != enterThePass) {
-                                requireContext().toast(getString(R.string.pass_and_confirm_pass_do_not_same))
+                            if (validEnterPassword()) {
+                                requireContext().longToast(getString(R.string.notice_pass_and_confirm_pass_do_not_same))
                                 binding.tvNoticeEnterConfirmPass.visible()
                                 return
                             } else {
@@ -254,6 +289,23 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
                 }
             }
         }
+    }
+
+    private fun validPassword(): Boolean {
+        return (!pass.contains("[A-Z]".toRegex()) || pass.length < 7)
+    }
+
+    private fun validEnterPassword(): Boolean {
+        return (confirmPass != pass)
+    }
+
+    private fun validPhoneNumber(): Boolean {
+        return (phone.length != 10)
+    }
+
+    private fun validEmail(): Boolean {
+        val emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+".toRegex()
+        return (!email.contains(emailPattern))
     }
 
 }

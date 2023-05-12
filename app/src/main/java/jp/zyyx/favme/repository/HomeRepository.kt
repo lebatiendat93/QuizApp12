@@ -9,7 +9,7 @@ import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.LoginResponses
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
-import jp.zyyx.favme.model.RemoteDataApiNew
+import jp.zyyx.favme.model.RemoteDataApi
 import jp.zyyx.favme.model.catchCommonErrors
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.flowOn
 import retrofit2.http.Header
 
 class HomeRepository(
-    private val api: RemoteDataApiNew
+    private val api: RemoteDataApi
 ) : Repository() {
 
     suspend fun getDepartmentList(

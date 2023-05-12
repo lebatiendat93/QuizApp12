@@ -48,7 +48,6 @@ class IntroduceFragment : Fragment() {
             clipToPadding = false
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         }
-        binding.viewPager2.isUserInputEnabled = false
         binding.indicator.setViewPager(binding.viewPager2)
 
         binding.btArrowRight.setOnClickListener {

@@ -1,23 +1,23 @@
 package jp.zyyx.favme.base
 
-import jp.zyyx.favme.model.RemoteDataApiNew
-import jp.zyyx.favme.repository.AuthRepositoryNew
+import jp.zyyx.favme.model.RemoteDataApi
+import jp.zyyx.favme.repository.AuthRepository
 import jp.zyyx.favme.repository.HomeRepository
 
 class BaseRepository (
-    private val remoteDataAPINew: RemoteDataApiNew
+    private val remoteDataAPINew: RemoteDataApi
 ) : Repository.Factory {
 
     companion object {
-        private var authRepository: AuthRepositoryNew? = null
+        private var authRepository: AuthRepository? = null
         private var homeRepository: HomeRepository? = null
     }
 
     override fun <T : Repository?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(AuthRepositoryNew::class.java) -> {
+            modelClass.isAssignableFrom(AuthRepository::class.java) -> {
                 if (authRepository == null) {
-                    authRepository = AuthRepositoryNew(remoteDataAPINew)
+                    authRepository = AuthRepository(remoteDataAPINew)
                 }
                 authRepository as T
             }

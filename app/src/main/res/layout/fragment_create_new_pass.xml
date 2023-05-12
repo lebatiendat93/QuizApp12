@@ -1,4 +1,4 @@
-gi<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +15,7 @@ gi<?xml version="1.0" encoding="utf-8"?>
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:fontFamily="@font/svn_gilroy_bold"
-        android:text="@string/create_new_password" />
+        android:text="@string/fp_24_title" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_create_new_pass"
@@ -25,7 +25,7 @@ gi<?xml version="1.0" encoding="utf-8"?>
         android:layout_below="@+id/tv_title_create_new_pass"
         android:layout_marginTop="86dp"
         android:fontFamily="@font/svn_gilroy_medium"
-        android:text="@string/new_password" />
+        android:text="@string/fp_24_label_new_password" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/ed_create_new_pass"
@@ -36,7 +36,7 @@ gi<?xml version="1.0" encoding="utf-8"?>
         android:background="@drawable/bg_gray4_r8"
         android:drawableRight="@drawable/eyes_visibility_off"
         android:drawableTint="@color/color_gray2"
-        android:hint="@string/enter_the_password"
+        android:hint="@string/dk_22_password_confirm"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:textColorHint="@color/color_gray2" />
@@ -49,7 +49,7 @@ gi<?xml version="1.0" encoding="utf-8"?>
         android:layout_below="@+id/ed_create_new_pass"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/svn_gilroy_medium"
-        android:text="@string/enter_new_password" />
+        android:text="@string/fp_24_label_confirm_password" />
 
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -61,7 +61,7 @@ gi<?xml version="1.0" encoding="utf-8"?>
         android:background="@drawable/bg_gray4_r8"
         android:drawableRight="@drawable/eyes_visibility_off"
         android:drawableTint="@color/color_gray2"
-        android:hint="@string/enter_new_password"
+        android:hint="@string/fp_24_label_confirm_password"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:textColorHint="@color/color_gray2" />

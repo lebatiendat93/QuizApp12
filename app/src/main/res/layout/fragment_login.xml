@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:fontFamily="@font/svn_gilroy_bold"
-        android:text="@string/lc_14_login" />
+        android:text="@string/all_label_login" />
 
     <androidx.appcompat.widget.AppCompatTextView
         style="@style/style_size_12"
@@ -20,7 +20,7 @@
         android:layout_above="@id/ed_email_or_phone"
         android:layout_marginTop="88dp"
         android:fontFamily="@font/svn_gilroy_medium"
-        android:text="@string/login_email_or_phone_number" />
+        android:text="@string/all_label_email_or_phone" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/ed_email_or_phone"
@@ -29,7 +29,7 @@
         android:layout_above="@id/tv_label_pass"
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_gray4_r8"
-        android:hint="@string/login_email_or_phone_number"
+        android:hint="@string/all_label_email_or_phone"
         android:paddingHorizontal="20dp"
         android:paddingVertical="13dp"
         android:textColorHint="@color/color_gray2" />
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="@string/save_pass" />
+            android:text="@string/dn_21_save_pwd" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             android:gravity="end |center"
             android:paddingStart="16dp"
-            android:text="@string/forgot_pass"
+            android:text="@string/dn_21_forgot_pwd"
             android:textColor="@color/black"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -107,7 +107,7 @@
         android:layout_marginTop="32dp"
         android:enabled="false"
         android:background="@drawable/bg_bt_selector_r20"
-        android:text="@string/lc_14_login"
+        android:text="@string/all_label_login"
         android:textColor="@color/white" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -131,7 +131,7 @@
             style="@style/style_size_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_google" />
+            android:text="@string/dn_21_btn_login_via_google" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -155,7 +155,7 @@
             style="@style/style_size_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_facebook" />
+            android:text="@string/dn_21_btn_login_via_facebook" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -179,7 +179,7 @@
             style="@style/style_size_16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_apple_id" />
+            android:text="@string/dn_21_btn_login_via_apple" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -198,7 +198,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_marginEnd="4dp"
-            android:text="@string/do_not_account" />
+            android:text="@string/dn_21_no_account" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_signup_now"
@@ -207,7 +207,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
-            android:text="@string/signup_now"
+            android:text="@string/dn_21_create_account"
             android:textColor="@color/color_primary" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

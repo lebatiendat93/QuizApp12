@@ -10,13 +10,13 @@ import jp.zyyx.favme.data.remote.responses.LoginResponses
 import jp.zyyx.favme.data.remote.responses.RegisterResponses
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
-import jp.zyyx.favme.repository.AuthRepositoryNew
+import jp.zyyx.favme.repository.AuthRepository
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class AuthViewModel(
-    private val repository: AuthRepositoryNew
+    private val repository: AuthRepository
 ) : ViewModel() {
 
     private val _login: MutableLiveData<Resource<LoginResponses>> = MutableLiveData()

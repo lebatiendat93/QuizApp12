@@ -12,10 +12,10 @@ import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentHomeBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.model.Resource
-import jp.zyyx.favme.model.ViewModelFactoryNew
+import jp.zyyx.favme.model.ViewModelFactory
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactoryNew.create() }
+    private val viewModel: HomeViewModel by viewModels { ViewModelFactory.create() }
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
 
     override fun getFragmentBinding(

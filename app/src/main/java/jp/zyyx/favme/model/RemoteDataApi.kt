@@ -17,13 +17,13 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 @Keep
-interface RemoteDataApiNew {
+interface RemoteDataApi {
     companion object {
         private const val API_ENDPOINT = "https://asia-northeast1-quiz-app-traning.cloudfunctions.net"
 
-        private var remoteDataAPINew: RemoteDataApiNew = createApiInstance()
+        private var remoteDataAPINew: RemoteDataApi = createApiInstance()
 
-        val instance: RemoteDataApiNew
+        val instance: RemoteDataApi
             get() = remoteDataAPINew
 
         fun applyAccessToken(accessToken: String) {
@@ -34,9 +34,9 @@ interface RemoteDataApiNew {
             remoteDataAPINew = createApiInstance()
         }
 
-        private fun createApiInstance(accessToken: String? = null): RemoteDataApiNew {
+        private fun createApiInstance(accessToken: String? = null): RemoteDataApi {
             return APIClientFactory(OkHttpClientFactory(accessToken).create(), API_ENDPOINT).create(
-                RemoteDataApiNew::class.java
+                RemoteDataApi::class.java
             )
         }
     }
