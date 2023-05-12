@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import jp.zyyx.favme.base.BaseFragmentNew
+import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentDepartmentListBinding
 
 
-class DepartmentListFragment : BaseFragmentNew<FragmentDepartmentListBinding>() {
+class DepartmentListFragment : BaseFragment<FragmentDepartmentListBinding>() {
 
 
 

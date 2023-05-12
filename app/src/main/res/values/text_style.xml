@@ -44,7 +44,7 @@
         <item name="fontFamily">@font/svn_gilroy_medium</item>
         <item name="android:textFontWeight">700</item>
         <item name="android:paddingVertical">16dp</item>
-        <item name="android:background">@drawable/bg_selector_bt_r20</item>
+        <item name="android:background">@drawable/bg_bt_selector_r20</item>
         <item name="android:lineHeight">24dp</item>
     </style>
 

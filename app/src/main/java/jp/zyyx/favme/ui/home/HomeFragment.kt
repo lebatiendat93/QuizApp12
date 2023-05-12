@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import jp.zyyx.favme.base.BaseFragmentNew
+import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentHomeBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
-import jp.zyyx.favme.model.ResourceNew
+import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactoryNew
 
-class HomeFragment : BaseFragmentNew<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactoryNew.create() }
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
 
@@ -52,13 +52,13 @@ class HomeFragment : BaseFragmentNew<FragmentHomeBinding>() {
     private fun handleObservable() {
         viewModel.getDepartment.observe(viewLifecycleOwner) {
             when (it) {
-                is ResourceNew.Loading -> {
+                is Resource.Loading -> {
 //                    binding.pgLoading.visible()
                 }
-                is ResourceNew.Error -> {
+                is Resource.Error -> {
 //                    binding.pgLoading.gone()
                 }
-                is ResourceNew.Success -> {
+                is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
                             getDepartmentAdapter.differ.submitList(it.data.result)

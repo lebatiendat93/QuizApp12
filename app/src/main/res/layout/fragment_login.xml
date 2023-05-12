@@ -106,7 +106,7 @@
         android:layout_above="@id/bt_login_google"
         android:layout_marginTop="32dp"
         android:enabled="false"
-        android:background="@drawable/bg_selector_bt_r20"
+        android:background="@drawable/bg_bt_selector_r20"
         android:text="@string/lc_14_login"
         android:textColor="@color/white" />
 
@@ -217,7 +217,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_centerInParent="true" />
 
 

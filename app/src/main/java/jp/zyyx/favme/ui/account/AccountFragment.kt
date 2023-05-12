@@ -34,7 +34,6 @@ class AccountFragment : Fragment() {
 
     }
 
-
     private fun initView() {
         binding.btLogout.setOnClickListener {
             MySharePreference.getInstance().setAccessToken("")

@@ -3,34 +3,35 @@ package jp.zyyx.favme.ui.auth
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.viewModels
 import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
-import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.base.BaseFragment
+import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentLoginBinding
-import jp.zyyx.favme.extension.replaceFragment
-import jp.zyyx.favme.model.api.Resource
+import jp.zyyx.favme.extension.*
+import jp.zyyx.favme.model.RemoteDataApiNew
+import jp.zyyx.favme.model.Resource
+import jp.zyyx.favme.model.ViewModelFactoryNew
 import jp.zyyx.favme.navigation.ScreenType
-import jp.zyyx.favme.repository.AuthRepository
 
-class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
-    override fun getViewModel() = AuthViewModel::class.java
+    private val viewModel: AuthViewModel by viewModels { ViewModelFactoryNew.create() }
+
     private var savePass = ""
     private var emailOrPhone = ""
     private var passWord = ""
+
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentLoginBinding.inflate(inflater, container, false)
-
-    override fun getFragmentRepository() = AuthRepository(remoteData.buildAPI(AuthApi::class.java))
+    ) = FragmentLoginBinding.inflate(layoutInflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,6 +39,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         handleObservable()
 
     }
+
     private fun initView() {
         handleShowOrHidePass()
 
@@ -52,16 +54,17 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         }
 
 
-        binding.btLogin.setOnClickListener {
+        binding.btLogin.setOnClickPreventingDouble {
+            binding.pgLoading.visible()
             emailOrPhone = binding.edEmailOrPhone.text.toString().trim()
             passWord = binding.edPass.text.toString().trim()
             savePass = passWord
             viewModel.login(emailOrPhone, passWord)
         }
 
-        binding.tvSignupNow.setOnClickListener {
+        binding.tvSignupNow.setOnClickPreventingDouble {
             requireActivity().replaceFragment(
-                RegisterFragmentNew(),
+                RegisterFragment(),
                 R.id.fragment_container,
                 ScreenType.AuthFlow.Register.name
             )
@@ -80,39 +83,53 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
     }
 
     private fun handleObservable() {
-//        viewModel.loginResult.observe(viewLifecycleOwner, Observer { login ->
-//            Log.e("LOGIN", login.result!!.access_token)
-//            Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG).show()
-//            (activity as MainActivity).replaceFragment(
-//                MainFragment(),
-//                R.id.fragment_container
-//            )
-//        })
-
-
-
-        viewModel.login.observe(viewLifecycleOwner) { login ->
-            when (login) {
-                is Resource.Success -> {
-                    Log.e("LOGIN", login.value.toString())
-                    Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG).show()
-                    MySharePreference.getInstance().setAccessToken(login.value.result.access_token)
-                    requireActivity().replaceFragment(
-                        MainFragment(),
-                        R.id.fragment_container,
-                        ScreenType.AuthFlow.MainFragment.name
-                    )
+        viewModel.login.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> {
+                    binding.pgLoading.visible()
                 }
                 is Resource.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Login Error ${login.errorBody}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    binding.pgLoading.gone()
                 }
-                is Resource.Loading -> {
+                is Resource.Success -> {
+                    binding.pgLoading.gone()
+                    when (it.data.statusCode) {
+                        200 -> {
+                            RemoteDataApiNew.applyAccessToken(it.data.result.access_token)
+                            MySharePreference.getInstance()
+                                .setAccessToken(it.data.result.access_token)
+                            MySharePreference.getInstance().setUserId(it.data.result.user_id)
+                            Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG)
+                                .show()
+
+                            requireActivity().replaceFragment(
+                                MainFragment(),
+                                R.id.fragment_container,
+                                ScreenType.AuthFlow.MainFragment.name
+                            )
+                        }
+
+                        400 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                        401 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                        500 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
 
                 }
+                else -> {
+                    binding.pgLoading.gone()
+                }
+
             }
 
         }

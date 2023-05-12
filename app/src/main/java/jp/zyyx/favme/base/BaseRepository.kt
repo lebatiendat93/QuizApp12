@@ -1,31 +1,35 @@
 package jp.zyyx.favme.base
 
-import android.util.Log
-import jp.zyyx.favme.model.api.Resource
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.HttpException
+import jp.zyyx.favme.model.RemoteDataApiNew
+import jp.zyyx.favme.repository.AuthRepositoryNew
+import jp.zyyx.favme.repository.HomeRepository
 
-abstract class BaseRepository {
-    suspend fun <T> safeApiCall(
-        apiCall: suspend () -> T
-    ): Resource<T> {
-        return withContext(Dispatchers.IO) {
-            try {
-                Log.e("Success", "API Success")
-                Resource.Success(apiCall.invoke())
-            } catch (throwable: Throwable) {
-                when (throwable) {
+class BaseRepository (
+    private val remoteDataAPINew: RemoteDataApiNew
+) : Repository.Factory {
 
-                    is HttpException -> {
-                        Log.e("Failed", "API ${throwable.response()?.errorBody()}")
-                        Resource.Error(false, throwable.code(), throwable.response()?.errorBody())
-                    }
-                    else -> {
-                        Resource.Error(true, null, null)
-                    }
+    companion object {
+        private var authRepository: AuthRepositoryNew? = null
+        private var homeRepository: HomeRepository? = null
+    }
+
+    override fun <T : Repository?> create(modelClass: Class<T>): T {
+        return when {
+            modelClass.isAssignableFrom(AuthRepositoryNew::class.java) -> {
+                if (authRepository == null) {
+                    authRepository = AuthRepositoryNew(remoteDataAPINew)
                 }
+                authRepository as T
             }
+
+            modelClass.isAssignableFrom(HomeRepository::class.java) -> {
+                if (homeRepository == null) {
+                    homeRepository = HomeRepository(remoteDataAPINew)
+                }
+                homeRepository as T
+            }
+            else -> throw ClassNotFoundException()
         }
     }
+
 }

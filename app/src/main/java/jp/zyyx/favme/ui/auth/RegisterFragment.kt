@@ -4,26 +4,26 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.viewModels
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentCreateAccountBinding
 import jp.zyyx.favme.extension.*
-import jp.zyyx.favme.model.api.Resource
+import jp.zyyx.favme.model.Resource
+import jp.zyyx.favme.model.ViewModelFactoryNew
 import jp.zyyx.favme.navigation.ScreenType
-import jp.zyyx.favme.repository.AuthRepository
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBinding, AuthRepository>() {
+class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
 
-    override fun getViewModel() = AuthViewModel::class.java
+    private val viewModel: AuthViewModel by viewModels { ViewModelFactoryNew.create() }
 
     private var name = ""
     private var email = ""
@@ -35,9 +35,7 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBindin
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentCreateAccountBinding.inflate(inflater, container, false)
-
-    override fun getFragmentRepository() = AuthRepository(remoteData.buildAPI(AuthApi::class.java))
+    ) = FragmentCreateAccountBinding.inflate(layoutInflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +48,7 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBindin
 
         binding.tvLoginNow.setOnClickListener {
             requireActivity().replaceFragment(
-                LoginFragmentNew(),
+                LoginFragment(),
                 R.id.fragment_container,
                 ScreenType.AuthFlow.Login.name
             )
@@ -86,6 +84,8 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBindin
         }
 
         binding.btRegister.setOnClickListener {
+            binding.pgLoading.visible()
+
             email = binding.edEnterEmail.text.toString().trim()
             phone = binding.edEnterPhone.text.toString().trim()
             name = binding.edEnterFullName.text.toString().trim()
@@ -110,18 +110,44 @@ class RegisterFragment : BaseFragment<AuthViewModel, FragmentCreateAccountBindin
         viewModel.register.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_LONG).show()
-                    Log.e("Register", it.value.toString())
-                    requireActivity().replaceFragment(
-                        LoginFragmentNew(),
-                        R.id.fragment_container,
-                        ScreenType.AuthFlow.Login.name
-                    )
+                    binding.pgLoading.gone()
+                    when (it.data.statusCode) {
+                            200 -> {
+                            Toast.makeText(requireContext(), "Register Success", Toast.LENGTH_LONG).show()
+                            requireActivity().replaceFragment(
+                                LoginFragment(),
+                                R.id.fragment_container,
+                                ScreenType.AuthFlow.Login.name
+                            )
+                        }
+
+                        400 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                        401 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                        500 -> {
+                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
+                                .show()
+                        }
+                    }
+
+
                 }
                 is Resource.Error -> {
                     Toast.makeText(requireContext(), "Failed Register", Toast.LENGTH_LONG).show()
                 }
-                is Resource.Loading -> {}
+                is Resource.Loading -> {
+
+                }
+                else -> {
+
+                }
             }
         }
     }

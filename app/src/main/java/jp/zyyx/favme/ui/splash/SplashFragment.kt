@@ -6,18 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import jp.zyyx.favme.MainActivity
 import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentSplashBinding
-import jp.zyyx.favme.extension.handleReplace
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.auth.LoginFragment
-import jp.zyyx.favme.ui.auth.LoginFragmentNew
-import jp.zyyx.favme.ui.auth.LoginOrRegisterFragment
-import jp.zyyx.favme.ui.splash.IntroduceFragment
 
 class SplashFragment : Fragment() {
 
@@ -56,7 +51,7 @@ class SplashFragment : Fragment() {
                         )
                     } else {
                         requireActivity().replaceFragment(
-                            LoginFragmentNew(), R.id.fragment_container,
+                            LoginFragment(), R.id.fragment_container,
                             ScreenType.AuthFlow.Login.name
                         )
                     }
