@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import jp.zyyx.favme.MainFragment
@@ -37,7 +38,20 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleObservable()
-
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed(
+                ) {
+                    if (emailOrPhone.isNotEmpty() || passWord.isNotEmpty()) {
+                        requireActivity().popBackStack()
+                    } else {
+                        dialogWarningBack {
+                            requireActivity().popBackStack()
+                        }
+                    }
+                }
+            })
     }
 
     private fun initView() {

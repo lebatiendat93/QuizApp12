@@ -48,7 +48,10 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed(
                 ) {
-                    if (!binding.btRegister.isEnabled) {
+                    if (userName.isNotEmpty() || email.isNotEmpty()
+                        || phone.isNotEmpty() || birthday.isNotEmpty()
+                        || pass.isNotEmpty() || confirmPass.isNotEmpty()
+                    ) {
                         requireActivity().popBackStack()
                     } else {
                         dialogWarningBack {
