@@ -14,7 +14,9 @@ import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(
+    FragmentHomeBinding::inflate
+) {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory.create() }
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
 

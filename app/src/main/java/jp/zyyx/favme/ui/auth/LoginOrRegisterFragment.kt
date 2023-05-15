@@ -12,7 +12,9 @@ import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.extension.setOnClickPreventingDouble
 import jp.zyyx.favme.navigation.ScreenType
 
-class LoginOrRegisterFragment : BaseFragment<FragmentLoginOrRegisterBinding>() {
+class LoginOrRegisterFragment : BaseFragment<FragmentLoginOrRegisterBinding>(
+    FragmentLoginOrRegisterBinding::inflate
+) {
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,

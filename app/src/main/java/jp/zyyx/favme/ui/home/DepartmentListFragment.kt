@@ -8,7 +8,9 @@ import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentDepartmentListBinding
 
 
-class DepartmentListFragment : BaseFragment<FragmentDepartmentListBinding>() {
+class DepartmentListFragment : BaseFragment<FragmentDepartmentListBinding>(
+    FragmentDepartmentListBinding::inflate
+) {
 
 
 

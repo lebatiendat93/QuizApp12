@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentInputBinding
 
-class InputFragment : BaseFragment<FragmentInputBinding>() {
+class InputFragment : BaseFragment<FragmentInputBinding>(
+    FragmentInputBinding::inflate
+) {
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,

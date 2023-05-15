@@ -22,7 +22,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
+class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>(
+    FragmentCreateAccountBinding::inflate
+) {
 
     private val viewModel: AuthViewModel by viewModels { ViewModelFactory.create() }
 
@@ -43,6 +45,7 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleObservable()
+
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
             object : OnBackPressedCallback(true) {

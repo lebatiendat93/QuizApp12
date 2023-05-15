@@ -16,7 +16,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelChildren
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseFragment<B : ViewBinding> : Fragment(), CoroutineScope {
+abstract class BaseFragment<VB : ViewBinding>(
+    private val bindingInflater: (inflater: LayoutInflater) -> VB
+) : Fragment(), CoroutineScope {
 
 
     private val job = Job()
@@ -25,18 +27,22 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), CoroutineScope {
         get() = Dispatchers.Main + job
 
 
-    protected lateinit var binding: B
+    private var _binding: VB? = null
+    val binding: VB get() = _binding as VB
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = getFragmentBinding(inflater, container)
+        _binding = bindingInflater.invoke(inflater)
+        if (_binding == null) {
+            throw IllegalArgumentException("Binding cannot be null")
+        }
         return binding.root
     }
 
-    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): B
+    abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 
     val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -47,9 +53,10 @@ abstract class BaseFragment<B : ViewBinding> : Fragment(), CoroutineScope {
     override fun onDestroyView() {
         coroutineContext.cancelChildren()
         super.onDestroyView()
+        _binding = null
     }
 
-    open fun dialogWarningBack(onOk: () -> Unit) {
+    fun dialogWarningBack(onOk: () -> Unit) {
         val alertDialog = AlertDialog.Builder(requireContext())
         alertDialog.apply {
             setTitle(R.string.exit_screen)

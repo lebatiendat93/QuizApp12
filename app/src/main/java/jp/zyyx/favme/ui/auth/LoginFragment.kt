@@ -21,7 +21,9 @@ import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.navigation.ScreenType
 
-class LoginFragment : BaseFragment<FragmentLoginBinding>() {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(
+    FragmentLoginBinding::inflate
+) {
 
     private val viewModel: AuthViewModel by viewModels { ViewModelFactory.create() }
 
@@ -122,20 +124,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                                 ScreenType.AuthFlow.MainFragment.name
                             )
                         }
-
                         400 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
 
                         401 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
 
                         500 -> {
-                            Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
-                                .show()
+                            requireContext().longToast(it.data.message.toString())
                         }
                     }
 
