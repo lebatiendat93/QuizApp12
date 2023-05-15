@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import jp.zyyx.favme.data.remote.requestparam.LoginRequest
-import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
-import jp.zyyx.favme.data.remote.responses.LoginResponses
-import jp.zyyx.favme.data.remote.responses.RegisterResponses
+import jp.zyyx.favme.data.remote.requestparam.auth.ForgotPassRequest
+import jp.zyyx.favme.data.remote.requestparam.auth.LoginRequest
+import jp.zyyx.favme.data.remote.requestparam.auth.RegisterRequest
+import jp.zyyx.favme.data.remote.responses.auth.ForgotPassResponse
+import jp.zyyx.favme.data.remote.responses.auth.LoginResponses
+import jp.zyyx.favme.data.remote.responses.auth.RegisterResponses
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.repository.AuthRepository
@@ -27,6 +29,9 @@ class AuthViewModel(
     val register: LiveData<Resource<RegisterResponses>>
         get() = _register
 
+    private val _forgotPass: MutableLiveData<Resource<ForgotPassResponse>> = MutableLiveData()
+    val forgotPass: LiveData<Resource<ForgotPassResponse>>
+        get() = _forgotPass
 
     fun login(
         email: String,
@@ -60,6 +65,18 @@ class AuthViewModel(
         }
     }
 
+    fun forgotPass(
+        email: String
+    ) = viewModelScope.launch {
+        val forgotPassRequest = ForgotPassRequest(email)
+        repository.forgotPass(forgotPassRequest).onStart {
+            Resource.Loading
+        }.catch { error ->
+            _forgotPass.value = Resource.Error(error as ModelException)
+        }.collect {
+            _forgotPass.value = Resource.Success(it)
+        }
+    }
 
 
 

@@ -1,20 +1,21 @@
 package jp.zyyx.favme.model
 
 import androidx.annotation.Keep
-import jp.zyyx.favme.data.remote.requestparam.GetDepartmentRequest
-import jp.zyyx.favme.data.remote.requestparam.ListDepartmentInfoRequest
-import jp.zyyx.favme.data.remote.requestparam.LoginRequest
-import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
-import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
-import jp.zyyx.favme.data.remote.responses.LoginResponses
-import jp.zyyx.favme.data.remote.responses.RegisterResponses
+import jp.zyyx.favme.data.remote.requestparam.auth.ForgotPassRequest
+import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
+import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
+import jp.zyyx.favme.data.remote.requestparam.auth.LoginRequest
+import jp.zyyx.favme.data.remote.requestparam.auth.RegisterRequest
+import jp.zyyx.favme.data.remote.responses.auth.ForgotPassResponse
+import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
+import jp.zyyx.favme.data.remote.responses.auth.LoginResponses
+import jp.zyyx.favme.data.remote.responses.auth.RegisterResponses
 import jp.zyyx.favme.model.api.APIClientFactory
 import jp.zyyx.favme.model.api.OkHttpClientFactory
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 @Keep
 interface RemoteDataApi {
@@ -44,13 +45,18 @@ interface RemoteDataApi {
     @POST("/login")
     suspend fun login(
         @Body login : LoginRequest
-    ):  LoginResponses
+    ): LoginResponses
 
     @POST("/register")
     suspend fun register(
         @Body register: RegisterRequest
     ): RegisterResponses
 
+
+    @POST("/forgotPassword")
+    suspend fun forgotPassword(
+        @Body forgotPassRequest: ForgotPassRequest
+    ): ForgotPassResponse
 
     @POST("/getDepartmentList")
     suspend fun getDepartmentList(

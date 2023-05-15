@@ -14,6 +14,7 @@ import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
+import jp.zyyx.favme.databinding.FragmentCreateNewPassBinding
 import jp.zyyx.favme.databinding.FragmentLoginBinding
 import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.RemoteDataApi
@@ -21,23 +22,25 @@ import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.navigation.ScreenType
 
-class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(FragmentCreateNewPassBinding::inflate) {
 
     private val viewModel: AuthViewModel by viewModels { ViewModelFactory.create() }
 
-    private var savePass = ""
     private var emailOrPhone = ""
     private var passWord = ""
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentLoginBinding.inflate(layoutInflater, container, false)
+    ) = FragmentCreateNewPassBinding.inflate(layoutInflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleObservable()
+
+
+
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
@@ -57,50 +60,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private fun initView() {
         handleShowOrHidePass()
 
-        binding.edEmailOrPhone.doOnTextChanged { _, _, _, _ ->
-            emailOrPhone = binding.edEmailOrPhone.text.toString().trim()
-            checkEnableBtLogin()
-        }
 
-        binding.edPass.doOnTextChanged { _, _, _, _ ->
-            passWord = binding.edPass.text.toString().trim()
-            checkEnableBtLogin()
-        }
-
-
-        binding.btLogin.setOnClickPreventingDouble {
-            binding.pgLoading.visible()
-            emailOrPhone = binding.edEmailOrPhone.text.toString().trim()
-            passWord = binding.edPass.text.toString().trim()
-            savePass = passWord
-            viewModel.login(emailOrPhone, passWord)
-        }
-
-        binding.tvSignupNow.setOnClickPreventingDouble {
-            requireActivity().replaceFragment(
-                RegisterFragment(),
-                R.id.fragment_container,
-                ScreenType.AuthFlow.Register.name
-            )
-        }
-
-        binding.cbSavePass.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                MySharePreference.setSavePass(savePass)
-                MySharePreference.isCbSavePass()
-            } else {
-                MySharePreference.setSavePass("")
-                !MySharePreference.isCbSavePass()
-            }
-        }
-
-        binding.tvForgotPass.setOnClickListener {
-            requireActivity().replaceFragment(
-                ForgotPassFragment(),
-                R.id.fragment_container,
-                ScreenType.AuthFlow.ForgotPass.name
-            )
-        }
     }
 
     private fun handleObservable() {
@@ -116,18 +76,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     binding.pgLoading.gone()
                     when (it.data.statusCode) {
                         200 -> {
-                            RemoteDataApi.applyAccessToken(it.data.result.access_token)
-                            MySharePreference.getInstance()
-                                .setAccessToken(it.data.result.access_token)
-                            MySharePreference.getInstance().setUserId(it.data.result.user_id)
-                            Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG)
-                                .show()
 
-                            requireActivity().replaceFragment(
-                                MainFragment(),
-                                R.id.fragment_container,
-                                ScreenType.AuthFlow.MainFragment.name
-                            )
                         }
                         400 -> {
                             requireContext().longToast(it.data.message.toString())
@@ -162,9 +111,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 binding.imgEyesShowOrHidePass.setImageResource(R.drawable.eyes_visibility_off)
             }
         }
+
+        binding.imgEyesShowOrHidePassConfirm.setOnClickListener {
+            if (binding.edConfirmPass.transformationMethod.equals(HideReturnsTransformationMethod.getInstance())) {
+                binding.edConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.imgEyesShowOrHidePassConfirm.setImageResource(R.drawable.eyes_visibility)
+            } else {
+                binding.edConfirmPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.imgEyesShowOrHidePassConfirm.setImageResource(R.drawable.eyes_visibility_off)
+            }
+        }
     }
 
-    private fun checkEnableBtLogin() {
+    private fun checkEnableBtRepass() {
         binding.btLogin.isEnabled = !(emailOrPhone.isEmpty() || passWord.isEmpty())
     }
 }

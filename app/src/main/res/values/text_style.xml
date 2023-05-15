@@ -8,6 +8,16 @@
         <item name="android:color">@color/color_gray2</item>
     </style>
 
+    <style name="style_size_12_medium_wrap">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:lineHeight">20dp</item>
+        <item name="android:color">@color/color_gray2</item>
+        <item name="android:fontFamily">@font/svn_gilroy_medium</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="style_text_regular_size_12">
         <item name="android:textSize">12dp</item>
         <item name="android:textFontWeight">400</item>

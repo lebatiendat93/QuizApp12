@@ -1,4 +1,4 @@
-package jp.zyyx.favme.data.remote.responses
+package jp.zyyx.favme.data.remote.responses.auth
 
 import android.os.Parcelable
 import androidx.annotation.Keep

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
+import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.repository.HomeRepository

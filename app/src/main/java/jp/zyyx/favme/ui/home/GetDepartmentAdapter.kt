@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import jp.zyyx.favme.data.remote.responses.ResultGetDepartment
+import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.databinding.ItemFacultyBinding
 
 class GetDepartmentAdapter : RecyclerView.Adapter<GetDepartmentAdapter.GetDepartmentViewHolder>() {

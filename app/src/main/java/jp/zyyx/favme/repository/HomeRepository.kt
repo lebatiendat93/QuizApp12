@@ -1,21 +1,16 @@
 package jp.zyyx.favme.repository
 
 import jp.zyyx.favme.base.Repository
-import jp.zyyx.favme.data.remote.requestparam.GetDepartmentRequest
-import jp.zyyx.favme.data.remote.requestparam.ListDepartmentInfoRequest
-import jp.zyyx.favme.data.remote.requestparam.LoginRequest
-import jp.zyyx.favme.data.remote.requestparam.RegisterRequest
-import jp.zyyx.favme.data.remote.responses.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.ListDepartmentInfoResponses
-import jp.zyyx.favme.data.remote.responses.LoginResponses
-import jp.zyyx.favme.data.remote.responses.RegisterResponses
+import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
+import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
+import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
+import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
 import jp.zyyx.favme.model.RemoteDataApi
 import jp.zyyx.favme.model.catchCommonErrors
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import retrofit2.http.Header
 
 class HomeRepository(
     private val api: RemoteDataApi

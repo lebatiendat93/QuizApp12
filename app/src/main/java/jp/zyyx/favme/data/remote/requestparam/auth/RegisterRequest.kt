@@ -1,4 +1,4 @@
-package jp.zyyx.favme.data.remote.requestparam
+package jp.zyyx.favme.data.remote.requestparam.auth
 
 import android.os.Parcelable
 import androidx.annotation.Keep

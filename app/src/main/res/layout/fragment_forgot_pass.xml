@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".ui.auth.LoginOrRegisterFragment">
+    android:padding="16dp">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_title_forgot_pass"
@@ -14,17 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
-        android:fontFamily="@font/svn_gilroy_bold"
         android:text="@string/all_label_login" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_email_or_phone"
-        style="@style/style_size_12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/style_size_12_medium_wrap"
         android:layout_below="@+id/tv_title_forgot_pass"
         android:layout_marginTop="86dp"
-        android:fontFamily="@font/svn_gilroy_medium"
         android:text="@string/all_label_email_or_phone" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -40,14 +35,23 @@
         android:textColorHint="@color/color_gray2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_login"
+        android:id="@+id/bt_send"
         style="@style/style_bt_medium_size_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="35dp"
-        android:background="@drawable/bg_bt_selected_r20"
+        android:background="@drawable/bg_bt_selector_r20"
+        android:enabled="false"
         android:text="@string/lc_14_send"
         android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/pgLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

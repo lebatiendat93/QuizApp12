@@ -55,11 +55,11 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>(
                         || phone.isNotEmpty() || birthday.isNotEmpty()
                         || pass.isNotEmpty() || confirmPass.isNotEmpty()
                     ) {
-                        requireActivity().popBackStack()
-                    } else {
                         dialogWarningBack {
                             requireActivity().popBackStack()
                         }
+                    } else {
+                        requireActivity().popBackStack()
                     }
                 }
             })
@@ -146,6 +146,13 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>(
             handleLogicRegister(email, phone, userName, birthday, pass, confirmPass)
         }
 
+        binding.tvAcceptPolicyAndRules.setOnClickListener {
+            requireActivity().replaceFragment(
+                PolicyAndRulesFragment(),
+                R.id.fragment_container,
+                ScreenType.AuthFlow.PolicyAndRule.name
+            )
+        }
 
     }
 

@@ -118,29 +118,62 @@
         android:background="@drawable/bg_white_top_r32"
         android:paddingHorizontal="24dp">
 
-      <androidx.appcompat.widget.LinearLayoutCompat
-          android:id="@+id/layout_system_user"
-          android:layout_marginTop="20dp"
-          android:orientation="horizontal"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout_system_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
 
-          <androidx.appcompat.widget.AppCompatTextView
-              style="@style/style_text_regular_size_14"
-              android:text="@string/home_31_from_system"
-              android:gravity="center"
-              android:layout_weight="1"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"/>
-          <androidx.appcompat.widget.AppCompatTextView
-              style="@style/style_text_regular_size_14"
-              android:text="@string/home_31_from_user"
-              android:layout_weight="1"
-              android:gravity="center"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_system"
+                    style="@style/style_text_regular_size_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_ripple_text_color_primary"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="@string/home_31_from_system" />
 
-      </androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_user"
+                    style="@style/style_text_regular_size_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_ripple_text_color_primary"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    android:text="@string/home_31_from_user" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+<!--            <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <View-->
+<!--                    android:id="@+id/v_underline_system"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:background="@color/color_gray3"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="1dp"/>-->
+
+<!--                <View-->
+<!--                    android:id="@+id/v_underline_user"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@color/color_gray3"-->
+<!--                    android:layout_height="1dp"/>-->
+
+<!--            </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -148,10 +181,10 @@
             style="@style/style_text_medium_size_20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#0C092A"
             android:layout_below="@id/layout_system_user"
-            android:layout_marginTop="20dp"
-            android:text="@string/home_31_faculty_list" />
+            android:paddingVertical="10dp"
+            android:text="@string/home_31_faculty_list"
+            android:textColor="#0C092A" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_see_all"
@@ -160,20 +193,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/layout_system_user"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_ripple_text_color_primary"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
             android:text="@string/home_31_view_all"
             android:textColor="@color/color_purple" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_department_list"
-            android:layout_marginTop="16dp"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_faculty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_title_faculty_list" />
+            android:layout_below="@+id/tv_title_faculty_list"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="60dp"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_faculty" />
 
     </RelativeLayout>
-
-
 </RelativeLayout>

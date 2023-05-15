@@ -1,14 +1,18 @@
 package jp.zyyx.favme.ui.home
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
+import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.databinding.FragmentHomeBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.model.Resource
@@ -19,12 +23,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 ) {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory.create() }
     private lateinit var getDepartmentAdapter: GetDepartmentAdapter
-
+    private var resultGetDepartment: List<ResultGetDepartment> = mutableListOf()
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentHomeBinding.inflate(inflater, container , false)
-
+    ) = FragmentHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,7 +46,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         }
         val userId = MySharePreference.getInstance().getUserId()
         val header = MySharePreference.getInstance().getAccessToken()
-        viewModel.getDepartment(header,userId,"Khoa")
+        viewModel.getDepartment(header, userId, "Khoa")
+
+        binding.tvSystem.setOnClickListener {
+            handleText()
+            val listDepartmentSystem = resultGetDepartment.filter { it.is_exam_by_system }
+            getDepartmentAdapter.differ.submitList(listDepartmentSystem)
+        }
+
+        binding.tvUser.setOnClickListener {
+            handleText()
+            val listDepartmentUser = resultGetDepartment.filter { it.is_exam_by_user }
+            getDepartmentAdapter.differ.submitList(listDepartmentUser)
+        }
 
         getDepartmentAdapter.onItemClickListener = {
 
@@ -51,6 +66,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
 
     }
+
     private fun handleObservable() {
         viewModel.getDepartment.observe(viewLifecycleOwner) {
             when (it) {
@@ -63,7 +79,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
-                            getDepartmentAdapter.differ.submitList(it.data.result)
+                            resultGetDepartment = it.data.result
                         }
                         400 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)
@@ -83,6 +99,30 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 else -> {}
             }
         }
+    }
+
+    private fun handleText() {
+        val spannableStringSystem = SpannableString(binding.tvSystem.text)
+        val spannableStringUser = SpannableString(binding.tvUser.text)
+        binding.tvSystem.setTextIsSelectable(true)
+        spannableStringSystem.setSpan(UnderlineSpan(), 0 , spannableStringSystem.length,0 )
+        binding.tvSystem.setTextColor(requireContext().getColor(R.color.black))
+
+        if (binding.tvUser.isSelected) {
+
+
+        } else {
+
+        }
 
     }
+
+//    {
+//        spannableStringSystem.setSpan(UnderlineSpan(), 0 , spannableStringSystem.length,0 )
+//        binding.tvSystem.setTextColor(requireContext().getColor(R.color.black))
+//    } else {
+//        spannableStringSystem.setSpan(UnderlineSpan(), 0 , 0,0 )
+//        binding.tvSystem.setTextColor(requireContext().getColor(R.color.color_gray3))
+//    }
+
 }

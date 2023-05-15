@@ -27,44 +27,79 @@
         android:fontFamily="@font/svn_gilroy_medium"
         android:text="@string/fp_24_label_new_password" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ed_create_new_pass"
+   <RelativeLayout
+        android:id="@+id/layout_enter_new_pass"
+        android:layout_below="@+id/tv_label_create_new_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_create_new_pass"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_gray4_r8"
-        android:drawableRight="@drawable/eyes_visibility_off"
-        android:drawableTint="@color/color_gray2"
-        android:hint="@string/dk_22_password_confirm"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="13dp"
-        android:textColorHint="@color/color_gray2" />
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ed_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_gray4_r8"
+            android:drawableTint="@color/color_gray2"
+            android:hint="@string/dk_22_password_confirm"
+            android:inputType="textPassword"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="13dp"
+            android:textColorHint="@color/color_gray2" />
+
+        <ImageView
+            android:id="@+id/img_eyes_show_or_hide_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ed_pass"
+            android:layout_alignEnd="@+id/ed_pass"
+            android:layout_alignBottom="@id/ed_pass"
+            android:paddingHorizontal="20dp"
+            android:src="@drawable/eyes_visibility_off"
+            app:tint="@color/color_gray2" />
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_label_enter_new_pass"
         style="@style/style_size_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_create_new_pass"
+        android:layout_below="@+id/layout_enter_new_pass"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/svn_gilroy_medium"
         android:text="@string/fp_24_label_confirm_password" />
 
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ed_enter_new_pass"
+    <RelativeLayout
+        android:layout_below="@+id/tv_label_enter_new_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_label_enter_new_pass"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_gray4_r8"
-        android:drawableRight="@drawable/eyes_visibility_off"
-        android:drawableTint="@color/color_gray2"
-        android:hint="@string/fp_24_label_confirm_password"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="13dp"
-        android:textColorHint="@color/color_gray2" />
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/ed_confirm_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_gray4_r8"
+            android:drawableTint="@color/color_gray2"
+            android:hint="@string/fp_24_label_confirm_password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="13dp"
+            android:textColorHint="@color/color_gray2" />
+
+        <ImageView
+            android:id="@+id/img_eyes_show_or_hide_pass_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ed_confirm_pass"
+            android:layout_alignEnd="@+id/ed_confirm_pass"
+            android:layout_alignBottom="@id/ed_confirm_pass"
+            android:paddingHorizontal="20dp"
+            android:src="@drawable/eyes_visibility_off"
+            app:tint="@color/color_gray2" />
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_login"
@@ -77,5 +112,13 @@
         android:background="@drawable/bg_bt_selector_r20"
         android:text="@string/lc_14_send"
         android:textColor="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/pgLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

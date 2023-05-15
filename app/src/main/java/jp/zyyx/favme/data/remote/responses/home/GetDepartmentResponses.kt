@@ -1,4 +1,4 @@
-package jp.zyyx.favme.data.remote.responses
+package jp.zyyx.favme.data.remote.responses.home
 
 import android.os.Parcelable
 import androidx.annotation.Keep
@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Keep
 data class GetDepartmentResponses(
     val statusCode: Int,
-    val result: List<ResultGetDepartment> ,
+    val result: List<ResultGetDepartment>,
     val message: String? = null
 ) : Parcelable
 

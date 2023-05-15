@@ -44,11 +44,7 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 
-    val onBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            requireActivity().popBackStack()
-        }
-    }
+
 
     override fun onDestroyView() {
         coroutineContext.cancelChildren()

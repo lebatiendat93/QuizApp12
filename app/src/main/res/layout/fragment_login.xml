@@ -86,10 +86,12 @@
             android:text="@string/dn_21_save_pwd" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forgot_pass"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="end |center"
+            android:background="@drawable/bg_ripple_text_color_gray3"
+            android:gravity="end|center"
             android:paddingStart="16dp"
             android:text="@string/dn_21_forgot_pwd"
             android:textColor="@color/black"
@@ -206,6 +208,7 @@
             android:paddingVertical="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_ripple_text_color_primary"
             android:paddingEnd="16dp"
             android:text="@string/dn_21_create_account"
             android:textColor="@color/color_primary" />
