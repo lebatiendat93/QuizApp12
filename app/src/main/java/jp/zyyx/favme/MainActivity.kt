@@ -14,21 +14,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-    private val onBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
-        if (supportFragmentManager.backStackEntryCount >= 1) {
-            binding.fragmentContainer.visible()
-        } else {
-            binding.fragmentContainer.gone()
-        }
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding  = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
-        replaceFragment(SplashFragment(), R.id.fragment_container, ScreenType.SplashFlow.Splash.name)
 
     }
+
+
 
 
 }

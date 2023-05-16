@@ -6,6 +6,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 
+
+inline fun <reified T : Fragment> FragmentActivity.addFragmentNow(id: Int) {
+    val fragment = T::class.java
+    supportFragmentManager.beginTransaction().add(id, fragment.newInstance()).commitNow()
+}
+
 fun FragmentActivity.replaceFragment(
     fragment: Fragment,
     container: Int,

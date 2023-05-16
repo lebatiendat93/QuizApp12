@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import jp.zyyx.favme.databinding.FragmentMainBinding
-import jp.zyyx.favme.databinding.FragmentSearchBinding
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.account.AccountFragment
