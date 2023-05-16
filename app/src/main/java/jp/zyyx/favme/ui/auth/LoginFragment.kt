@@ -116,6 +116,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                     binding.pgLoading.gone()
                     when (it.data.statusCode) {
                         200 -> {
+                            viewModel.user = it.data
+
                             RemoteDataApi.applyAccessToken(it.data.result.access_token)
                             MySharePreference.getInstance()
                                 .setAccessToken(it.data.result.access_token)

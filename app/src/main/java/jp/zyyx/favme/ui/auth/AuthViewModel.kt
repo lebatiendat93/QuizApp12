@@ -21,6 +21,10 @@ class AuthViewModel(
     private val repository: AuthRepository
 ) : ViewModel() {
 
+
+    var user : LoginResponses? = null
+
+
     private val _login: MutableLiveData<Resource<LoginResponses>> = MutableLiveData()
     val login: LiveData<Resource<LoginResponses>>
         get() = _login

@@ -70,4 +70,12 @@ sealed class ScreenType : Parcelable {
                 get() = "Information Settings"
         }
     }
+
+    sealed class HomeFlow : ScreenType() {
+        @Parcelize
+        object SearchFragment : HomeFlow() {
+            override val name: String
+                get() = "Search Fragment"
+        }
+    }
 }

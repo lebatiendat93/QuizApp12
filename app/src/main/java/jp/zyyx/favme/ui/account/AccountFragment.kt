@@ -12,6 +12,7 @@ import jp.zyyx.favme.databinding.FragmentAccountBinding
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.auth.LoginFragment
+import kotlin.coroutines.CoroutineContext
 
 class AccountFragment : BaseFragment<FragmentAccountBinding>(
     FragmentAccountBinding::inflate

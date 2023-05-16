@@ -2,6 +2,7 @@ package jp.zyyx.favme.data.remote.responses.home
 
 import android.os.Parcelable
 import androidx.annotation.Keep
+import com.google.gson.JsonElement
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

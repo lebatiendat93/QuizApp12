@@ -93,9 +93,24 @@
         <item name="android:lineHeight">28dp</item>
     </style>
 
+    <style name="style_text_sm_bold_size_20">
+        <item name="android:textSize">20dp</item>
+        <item name="fontFamily">@font/svn_gilroy_bold</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:lineHeight">28dp</item>
+    </style>
+
     <style name="style_title_smbold_size_24">
         <item name="android:textSize">24dp</item>
         <item name="fontFamily">@font/svn_gilroy_semi_bold</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:lineHeight">38dp</item>
+    </style>
+
+    <style name="style_title_regular_size_24">
+        <item name="android:textSize">24dp</item>
+        <item name="fontFamily">@font/svn_gilroy_regular</item>
         <item name="android:textFontWeight">600</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:lineHeight">38dp</item>

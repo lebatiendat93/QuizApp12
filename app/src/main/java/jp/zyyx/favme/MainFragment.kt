@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import jp.zyyx.favme.databinding.FragmentMainBinding
+import jp.zyyx.favme.databinding.FragmentSearchBinding
+import jp.zyyx.favme.extension.replaceFragment
+import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.account.AccountFragment
 import jp.zyyx.favme.ui.analysis.AnalysisFragment
 import jp.zyyx.favme.ui.home.HomeFragment
 import jp.zyyx.favme.ui.input.InputFragment
+import jp.zyyx.favme.ui.search.SearchFragment
 
 class MainFragment : Fragment() {
 
@@ -32,6 +36,20 @@ class MainFragment : Fragment() {
     }
 
     private fun initView() {
+
+        handleBottomNavigation()
+
+        binding.fabButtonSearch.setOnClickListener {
+            requireActivity().replaceFragment(
+                SearchFragment(),
+                R.id.frame_layout,
+                ScreenType.HomeFlow.SearchFragment.name
+            )
+        }
+
+    }
+
+    private fun handleBottomNavigation() {
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
 
@@ -66,6 +84,5 @@ class MainFragment : Fragment() {
             }
             true
         }
-
     }
 }

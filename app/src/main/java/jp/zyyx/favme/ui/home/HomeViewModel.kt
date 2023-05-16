@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
+import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.repository.HomeRepository
@@ -17,6 +18,9 @@ class HomeViewModel(
     private val repository: HomeRepository
 ) : ViewModel() {
 
+    private val _listDepartmentResponse = MutableLiveData<GetDepartmentResponses>()
+    val listDepartmentResponse: LiveData<GetDepartmentResponses> = _listDepartmentResponse
+
     private val _getDepartment: MutableLiveData<Resource<GetDepartmentResponses>> =
         MutableLiveData()
     val getDepartment: LiveData<Resource<GetDepartmentResponses>>
@@ -26,6 +30,10 @@ class HomeViewModel(
         MutableLiveData()
     val listDepartmentInfo: LiveData<Resource<ListDepartmentInfoResponses>>
         get() = _listDepartmentInfo
+
+    fun setDepartmentResponse ( list :GetDepartmentResponses) {
+        _listDepartmentResponse.value = list
+    }
 
     fun getDepartment(
         header: String,

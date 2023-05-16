@@ -12,8 +12,6 @@ class DepartmentListFragment : BaseFragment<FragmentDepartmentListBinding>(
     FragmentDepartmentListBinding::inflate
 ) {
 
-
-
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?

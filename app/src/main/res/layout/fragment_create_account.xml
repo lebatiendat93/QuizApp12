@@ -302,7 +302,7 @@
                     style="@style/style_size_12"
                     android:paddingVertical="8dp"
                     android:paddingEnd="16dp"
-                    android:background="@drawable/bg_ripple_text_color_primary"
+                    android:background="@drawable/bg_ripple_primary_text_color_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/all_label_login"
