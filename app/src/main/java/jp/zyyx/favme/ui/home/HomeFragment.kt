@@ -18,9 +18,12 @@ import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.databinding.FragmentHomeBinding
 import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.extension.popBackStack
+import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
+import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.auth.AuthViewModel
+import jp.zyyx.favme.ui.listdepartment.ListDepartmentFragment
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::inflate
@@ -50,7 +53,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     }
 
     private fun initView() {
-
         binding.rcvDepartmentList.apply {
             layoutManager = LinearLayoutManager(context)
             getDepartmentAdapter = GetDepartmentAdapter().apply {
@@ -67,7 +69,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
         binding.tvSystem.setOnClickListener {
 //            handleText()
-            val listDepartmentSystem = viewModel.listDepartmentResponse.value?.result?.filter { it.is_exam_by_system }
+            val listDepartmentSystem =
+                viewModel.listDepartmentResponse.value?.result?.filter { it.is_exam_by_system }
             getDepartmentAdapter.differ.submitList(listDepartmentSystem)
         }
 
@@ -80,6 +83,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
         getDepartmentAdapter.onItemClickListener = {
 
+        }
+
+        binding.tvSeeAll.setOnClickListener {
+            requireActivity().replaceFragment(
+                ListDepartmentFragment(),
+                R.id.fragment_container_home,
+                ScreenType.HomeFlow.ListDepartmentFragment.name
+            )
         }
 
 
@@ -97,7 +108,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
-                            val listDepartmentSystem = it.data.result.filter { it.is_exam_by_system }
+                            val listDepartmentSystem =
+                                it.data.result.filter { it.is_exam_by_system }
                             getDepartmentAdapter.differ.submitList(listDepartmentSystem)
                             viewModel.setDepartmentResponse(it.data)
                         }

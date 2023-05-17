@@ -49,11 +49,7 @@ sealed class ScreenType : Parcelable {
                 get() = "Forgot Pass"
         }
 
-        @Parcelize
-        object MainFragment : AuthFlow() {
-            override val name: String
-                get() = "Main Fragment"
-        }
+
 
         @Parcelize
         object PolicyAndRule : AuthFlow() {
@@ -76,6 +72,23 @@ sealed class ScreenType : Parcelable {
         object SearchFragment : HomeFlow() {
             override val name: String
                 get() = "Search Fragment"
+        }
+
+        @Parcelize
+        object HomeFragment : HomeFlow() {
+            override val name: String
+                get() = "Home Fragment"
+        }
+        @Parcelize
+        object MainFragment : HomeFlow() {
+            override val name: String
+                get() = "Main Fragment"
+        }
+
+        @Parcelize
+        object ListDepartmentFragment : HomeFlow() {
+            override val name: String
+                get() = "List Department Fragment"
         }
     }
 }

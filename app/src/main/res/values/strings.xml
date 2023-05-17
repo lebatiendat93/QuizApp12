@@ -78,8 +78,12 @@
     <string name="notice_request_enter_name">Yêu cầu nhập tên đăng ký</string>
     <string name="notice_pass_and_confirm_pass_do_not_same">Mật khẩu và mật khẩu xác nhận không giống nhau</string>
     <string name="subject_list">Danh sách môn</string>
+    <string name="exam_list">Danh sách đề</string>
     <string name="exit_screen">Thoát màn hình</string>
     <string name="do_you_exit_screen">Bạn có muốn thoát không?</string>
+    <string name="search_department">Tìm khoa</string>
+    <string name="search_exam">Tìm đề</string>
+    <string name="subject_and_department_name"> %1$s | %2$s</string>
 
 
 

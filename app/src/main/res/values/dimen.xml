@@ -4,5 +4,6 @@
     <dimen name="_2dp">2.00dp</dimen>
     <dimen name="_1dp">1.00dp</dimen>
     <dimen name="_12dp">12.00dp</dimen>
+    <dimen name="_16dp">16.00dp</dimen>
 
 </resources>

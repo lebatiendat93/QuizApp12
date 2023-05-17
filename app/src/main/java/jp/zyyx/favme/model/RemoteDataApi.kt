@@ -6,11 +6,13 @@ import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
 import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
 import jp.zyyx.favme.data.remote.requestparam.auth.LoginRequest
 import jp.zyyx.favme.data.remote.requestparam.auth.RegisterRequest
+import jp.zyyx.favme.data.remote.requestparam.home.ExamRequest
 import jp.zyyx.favme.data.remote.responses.auth.ForgotPassResponse
 import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.auth.LoginResponses
 import jp.zyyx.favme.data.remote.responses.auth.RegisterResponses
+import jp.zyyx.favme.data.remote.responses.home.ExamResponses
 import jp.zyyx.favme.model.api.APIClientFactory
 import jp.zyyx.favme.model.api.OkHttpClientFactory
 import retrofit2.http.Body
@@ -65,11 +67,16 @@ interface RemoteDataApi {
     ): GetDepartmentResponses
 
     @POST("/listDepartmentInfo")
-    suspend fun listDepartmentInfo(
+    suspend fun getListDepartmentInfo(
         @Header ("Authorization") header: String,
         @Body listDepartmentInfoRequest : ListDepartmentInfoRequest
     ): ListDepartmentInfoResponses
 
+    @POST("/listExam")
+    suspend fun getListExam(
+        @Header ("Authorization") header: String,
+        @Body examRequest : ExamRequest
+    ): ExamResponses
 
 
 }

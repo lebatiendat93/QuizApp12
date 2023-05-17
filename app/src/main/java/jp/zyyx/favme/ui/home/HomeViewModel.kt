@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import jp.zyyx.favme.data.remote.responses.home.ExamResponses
 import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
-import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.repository.HomeRepository
@@ -31,7 +31,12 @@ class HomeViewModel(
     val listDepartmentInfo: LiveData<Resource<ListDepartmentInfoResponses>>
         get() = _listDepartmentInfo
 
-    fun setDepartmentResponse ( list :GetDepartmentResponses) {
+    private val _listExam: MutableLiveData<Resource<ExamResponses>> =
+        MutableLiveData()
+    val listExam: LiveData<Resource<ExamResponses>>
+        get() = _listExam
+
+    fun setDepartmentResponse(list: GetDepartmentResponses) {
         _listDepartmentResponse.value = list
     }
 
@@ -62,6 +67,23 @@ class HomeViewModel(
             }
     }
 
+    fun getListExam(
+        header: String,
+        userId: Int,
+        subject_id: Int,
+        type: Int,
+        sort_field: Int,
+        sort_by: String
+    ) = viewModelScope.launch {
+        repository.getListExam(header, userId, subject_id, type, sort_field, sort_by)
+            .onStart { Resource.Loading }
+            .catch { error ->
+                _listExam.value = Resource.Error(error as ModelException)
+            }
+            .collect {
+                _listExam.value = Resource.Success(it)
+            }
+    }
 
 }
 

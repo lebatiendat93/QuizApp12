@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_marginTop="@dimen/_16dp"
         android:id="@+id/layout_toolbar"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:text="@string/tk_32_title"
+            android:text="@string/exam_list"
             style="@style/style_title_regular_size_24"
             android:textColor="@color/white"
             android:gravity="center"
@@ -40,45 +41,66 @@
 
 
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/search_view"
-        android:layout_marginTop="16dp"
-        android:paddingVertical="@dimen/_12dp"
-        android:drawableStart="@drawable/ic_search"
-        android:paddingLeft="@dimen/_12dp"
-        android:drawablePadding="@dimen/_12dp"
+    <LinearLayout
+        android:layout_marginTop="@dimen/_16dp"
+        android:gravity="center_vertical"
+        android:id="@+id/layout_search"
         android:layout_below="@id/layout_toolbar"
-        android:hint="@string/tk_32_search_hint"
-        android:layout_marginHorizontal="24dp"
-        android:background="@drawable/bg_search_r20"
+        android:layout_marginStart="24dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search_department"
+            android:paddingVertical="@dimen/_12dp"
+            android:drawableStart="@drawable/ic_search"
+            style="@style/style_text_regular_size_16"
+            android:paddingLeft="@dimen/_12dp"
+            android:drawablePadding="@dimen/_12dp"
+            android:hint="@string/search_exam"
+            android:textColorHint="@color/white"
+            android:background="@drawable/bg_search_r20"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/img_sort"
+            android:paddingHorizontal="24dp"
+            android:src="@drawable/ic_show_menu"
+            android:background="@drawable/bg_ripple_gray_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:padding="24dp"
         android:layout_marginTop="24dp"
-        android:layout_below="@id/search_view"
+        android:layout_below="@id/layout_search"
         android:background="@drawable/bg_white_top_r32"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/style_text_medium_size_20"
-            android:textColor="@color/black"
-            android:layout_marginTop="3dp"
-            android:text="@string/tk_32_suggestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_department_and_subject_name"
+            style="@style/style_text_medium_size_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_system_user"
+            android:paddingVertical="10dp"
+            tools:text="Toán học | Khoa tự nhiên"
+            android:textColor="#0C092A" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_item_suggest"
-            tools:listitem="@layout/item_suggest"
-            android:layout_marginTop="16dp"
+            tools:listitem="@layout/item_subject"
+            tools:itemCount="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

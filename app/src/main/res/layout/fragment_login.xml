@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bg_ripple_text_color_gray3"
+            android:background="@drawable/bg_ripple_gray3"
             android:gravity="end|center"
             android:paddingStart="16dp"
             android:text="@string/dn_21_forgot_pwd"

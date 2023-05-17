@@ -273,7 +273,7 @@
                 android:id="@+id/tv_accept_policy_and_rules"
                 style="@style/style_bt_medium_size_14"
                 android:layout_width="match_parent"
-                android:background="@drawable/bg_ripple_text_color_gray3"
+                android:background="@drawable/bg_ripple_gray3"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="51dp"
                 android:layout_marginEnd="4dp"
