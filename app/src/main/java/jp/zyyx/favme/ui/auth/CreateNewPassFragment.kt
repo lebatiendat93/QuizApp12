@@ -6,21 +6,17 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
-import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
-import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentCreateNewPassBinding
-import jp.zyyx.favme.databinding.FragmentLoginBinding
-import jp.zyyx.favme.extension.*
-import jp.zyyx.favme.model.RemoteDataApi
+import jp.zyyx.favme.extension.gone
+import jp.zyyx.favme.extension.longToast
+import jp.zyyx.favme.extension.popBackStack
+import jp.zyyx.favme.extension.visible
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
-import jp.zyyx.favme.navigation.ScreenType
 
 class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(FragmentCreateNewPassBinding::inflate) {
 
@@ -38,9 +34,6 @@ class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(Fragmen
         super.onViewCreated(view, savedInstanceState)
         initView()
         handleObservable()
-
-
-
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
