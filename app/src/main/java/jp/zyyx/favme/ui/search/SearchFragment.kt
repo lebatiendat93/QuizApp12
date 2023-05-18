@@ -12,13 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
-import jp.zyyx.favme.databinding.FragmentInputBinding
 import jp.zyyx.favme.databinding.FragmentSearchBinding
 import jp.zyyx.favme.extension.GridSpacingItemDecoration
 import jp.zyyx.favme.extension.popBackStack
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
-import jp.zyyx.favme.ui.home.GetDepartmentAdapter
 import jp.zyyx.favme.ui.home.HomeViewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(

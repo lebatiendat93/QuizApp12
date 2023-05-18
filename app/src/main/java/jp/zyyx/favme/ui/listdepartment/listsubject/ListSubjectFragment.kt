@@ -16,14 +16,13 @@ import jp.zyyx.favme.extension.LinearSpacingItemDecoration
 import jp.zyyx.favme.extension.popBackStack
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
-import jp.zyyx.favme.ui.home.GetDepartmentAdapter
 import jp.zyyx.favme.ui.home.HomeViewModel
 
 class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
     FragmentListSubjectBinding::inflate
 ) {
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory.create() }
-    private lateinit var listExamAdapter: GetDepartmentAdapter
+    private lateinit var listExamAdapter: ListExamAdapter
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
@@ -36,6 +35,19 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
         }
     }
 
+    companion object {
+        const val ID = "ID"
+        fun newInstance(subjectId : Int) = ListSubjectFragment().apply {
+            val bundle = Bundle()
+            bundle.putInt(ID,subjectId)
+            arguments = bundle
+        }
+    }
+
+    private val subjectId : Int by lazy {
+        requireArguments().getInt(ID)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,13 +57,19 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
 
     private fun initView() {
 
+        val userId = MySharePreference.getInstance().getUserId()
+        val header = MySharePreference.getInstance().getAccessToken()
+
+        viewModel.getListExam(header, userId, subjectId, 3,2, "desc")
+
         binding.tvBack.setOnClickListener {
             onBackPressedCallback.handleOnBackPressed()
         }
 
         binding.rcvItemSuggest.apply {
             layoutManager = LinearLayoutManager(context)
-            listExamAdapter = GetDepartmentAdapter()
+            setHasFixedSize(false)
+            listExamAdapter = ListExamAdapter()
             adapter = listExamAdapter
             addItemDecoration(LinearSpacingItemDecoration(resources.getDimensionPixelOffset(R.dimen._16dp)))
         }
@@ -60,14 +78,11 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
 
         }
 
-        val userId = MySharePreference.getInstance().getUserId()
-        val header = MySharePreference.getInstance().getAccessToken()
-        viewModel.getListExam(header, userId)
 
     }
 
     private fun handleObservable() {
-        viewModel.listExam.observe(viewLifecycleOwner) {
+        viewModel.getListExam.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
 //                    binding.pgLoading.visible()
@@ -78,7 +93,8 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
-                            listExamAdapter.differ.submitList(it.data.result)
+                            listExamAdapter.differ.submitList(it.data.result.list_exam)
+
                         }
                         400 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)

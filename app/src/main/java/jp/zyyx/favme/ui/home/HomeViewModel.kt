@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import jp.zyyx.favme.data.remote.responses.home.ExamResponses
-import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
+import jp.zyyx.favme.data.remote.responses.home.*
 import jp.zyyx.favme.model.ModelException
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.repository.HomeRepository
@@ -31,10 +29,16 @@ class HomeViewModel(
     val listDepartmentInfo: LiveData<Resource<ListDepartmentInfoResponses>>
         get() = _listDepartmentInfo
 
-    private val _listExam: MutableLiveData<Resource<ExamResponses>> =
+    private val _getListExam: MutableLiveData<Resource<ExamResponses>> =
         MutableLiveData()
-    val listExam: LiveData<Resource<ExamResponses>>
-        get() = _listExam
+    val getListExam: LiveData<Resource<ExamResponses>>
+        get() = _getListExam
+
+
+    private val _getExamDetail: MutableLiveData<Resource<ExamDetailResponses>> =
+        MutableLiveData()
+    val getExamDetail: LiveData<Resource<ExamDetailResponses>>
+        get() = _getExamDetail
 
     fun setDepartmentResponse(list: GetDepartmentResponses) {
         _listDepartmentResponse.value = list
@@ -78,10 +82,25 @@ class HomeViewModel(
         repository.getListExam(header, userId, subject_id, type, sort_field, sort_by)
             .onStart { Resource.Loading }
             .catch { error ->
-                _listExam.value = Resource.Error(error as ModelException)
+                _getListExam.value = Resource.Error(error as ModelException)
             }
             .collect {
-                _listExam.value = Resource.Success(it)
+                _getListExam.value = Resource.Success(it)
+            }
+    }
+
+    fun getExamDetail(
+        header: String,
+        userId: Int,
+        exam_id: Int,
+    ) = viewModelScope.launch {
+        repository.getExamDetail(header, userId, exam_id)
+            .onStart { Resource.Loading }
+            .catch { error ->
+                _getExamDetail.value = Resource.Error(error as ModelException)
+            }
+            .collect {
+                _getExamDetail.value = Resource.Success(it)
             }
     }
 

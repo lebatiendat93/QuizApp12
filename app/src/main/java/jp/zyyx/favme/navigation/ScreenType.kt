@@ -90,5 +90,10 @@ sealed class ScreenType : Parcelable {
             override val name: String
                 get() = "List Department Fragment"
         }
+        @Parcelize
+        object ListSubjectFragment : HomeFlow() {
+            override val name: String
+                get() = "List Subject Fragment"
+        }
     }
 }

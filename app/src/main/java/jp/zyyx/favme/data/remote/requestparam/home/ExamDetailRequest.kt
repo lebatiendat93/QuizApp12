@@ -6,10 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-data class ExamRequest(
+data class ExamDetailRequest(
     val user_id: Int,
-    val subject_id: Int,
-    val type: Int,
-    val sort_field: Int,
-    val sort_by: String,
+    val exam_id: Int
 ) : Parcelable

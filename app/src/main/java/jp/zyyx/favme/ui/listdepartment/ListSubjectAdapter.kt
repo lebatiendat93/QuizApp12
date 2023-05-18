@@ -8,14 +8,20 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import jp.zyyx.favme.R
+import jp.zyyx.favme.data.remote.responses.home.ResultListDepartmentInfo
 import jp.zyyx.favme.data.remote.responses.home.Subjects
 
-class ListSubjectAdapter(private val listSubject: List<Subjects>) :
+class ListSubjectAdapter() :
     RecyclerView.Adapter<ListSubjectAdapter.ListSubjectViewHolder>() {
 
+    private var listSubject =  listOf<Subjects>()
+    var onItemClickListenerSubject: ((subjects: ResultListDepartmentInfo) -> Unit)? = null
 
-    var onItemClickListener: ((subjects: Subjects) -> Unit)? = null
-
+    lateinit var resultListDepartmentInfo : ResultListDepartmentInfo
+    fun setData(list :  List<Subjects>) {
+        this.listSubject = list
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSubjectViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_subject, parent, false)
@@ -30,7 +36,7 @@ class ListSubjectAdapter(private val listSubject: List<Subjects>) :
         holder.subjectName.text = data.title
         Glide.with(holder.examNumber.context).load(data.image).into(holder.imgSubject)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(data)
+            onItemClickListenerSubject?.invoke(resultListDepartmentInfo)
         }
     }
 

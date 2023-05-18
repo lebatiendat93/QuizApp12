@@ -1,9 +1,11 @@
 package jp.zyyx.favme.repository
 
 import jp.zyyx.favme.base.Repository
+import jp.zyyx.favme.data.remote.requestparam.home.ExamDetailRequest
 import jp.zyyx.favme.data.remote.requestparam.home.ExamRequest
 import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
 import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
+import jp.zyyx.favme.data.remote.responses.home.ExamDetailResponses
 import jp.zyyx.favme.data.remote.responses.home.ExamResponses
 import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
@@ -63,6 +65,23 @@ class HomeRepository(
             try {
                 val examRequest = ExamRequest(userId, subject_id, type, sort_field, sort_by)
                 val responses = api.getListExam(header, examRequest)
+                emit(responses)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                e.catchCommonErrors()
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getExamDetail(
+        header: String,
+        userId: Int,
+        exam_id: Int,
+    ): Flow<ExamDetailResponses> {
+        return flow {
+            try {
+                val examDetailRequest = ExamDetailRequest(userId, exam_id)
+                val responses = api.getExamDetail(header, examDetailRequest)
                 emit(responses)
             } catch (e: Exception) {
                 e.printStackTrace()

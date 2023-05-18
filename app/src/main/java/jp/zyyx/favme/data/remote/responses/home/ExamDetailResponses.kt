@@ -6,36 +6,24 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Keep
-data class ExamResponses(
+data class ExamDetailResponses(
     val statusCode: Int,
-    val result: ExamResult,
+    val result: List<ExamDetailResult> ,
     val message: String? = null
 ) : Parcelable
 
 @Parcelize
 @Keep
-data class ExamResult(
+data class ExamDetailResult(
     val id: Int,
     val title: String,
-    val department_description: String,
-    val department_id: Int,
-    val department_title: String,
-    val description: String,
-    val list_exam: List<ListExam>,
+    val list_exam: List<ExamDetailSubject>,
 ) : Parcelable
 
 
 @Parcelize
 @Keep
-data class ListExam(
+data class ExamDetailSubject(
     val id: Int,
-    val title: String,
-    val image: String,
-    val author_email: String,
-    val author_id: Int,
-    val author_name: String,
-    val number: Int,
-    val saved_num: Int,
-    val status: Int,
-    val time: Int,
+    val title: String
 ) : Parcelable

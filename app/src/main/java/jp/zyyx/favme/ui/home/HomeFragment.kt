@@ -83,6 +83,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
         getDepartmentAdapter.onItemClickListener = {
 
+
         }
 
         binding.tvSeeAll.setOnClickListener {

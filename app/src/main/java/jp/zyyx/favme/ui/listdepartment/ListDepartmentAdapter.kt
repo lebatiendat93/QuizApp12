@@ -19,8 +19,9 @@ class ListDepartmentAdapter :
         this.listDepartment = list
         notifyDataSetChanged()
     }
-    var onItemClickListener: ((item: ResultListDepartmentInfo) -> Unit)? = null
+    var onClickListenerSeeAll: ((item: ResultListDepartmentInfo) -> Unit)? = null
 
+    var onItemClickListenerSubject: ((item: ResultListDepartmentInfo) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListSubjectViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list_department, parent, false)
@@ -33,16 +34,26 @@ class ListDepartmentAdapter :
     override fun onBindViewHolder(holder: ListSubjectViewHolder, position: Int) {
         val data = listDepartment[position]
 
+        holder.seeAll.setOnClickListener {
+            onClickListenerSeeAll?.invoke(data)
+        }
+
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(data)
+            onItemClickListenerSubject?.invoke(data)
         }
         holder.departmentName.text = data.title
 
-        holder.rcvSubject.setHasFixedSize(true)
+        holder.rcvSubject.setHasFixedSize(false)
         holder.rcvSubject.layoutManager = LinearLayoutManager(holder.departmentName.context)
         holder.rcvSubject.addItemDecoration(LinearSpacingItemDecoration(holder.itemView.resources.getDimensionPixelOffset(R.dimen._16dp)))
-        val adapter = ListSubjectAdapter(data.subjects)
-        holder.rcvSubject.adapter = adapter
+        val listSubjectAdapter = ListSubjectAdapter()
+        holder.rcvSubject.adapter = listSubjectAdapter
+
+        (holder.rcvSubject.adapter as ListSubjectAdapter).setData(data.subjects)
+        (holder.rcvSubject.adapter as ListSubjectAdapter).resultListDepartmentInfo = data
+
+        listSubjectAdapter.onItemClickListenerSubject = onItemClickListenerSubject
+
     }
 
     inner class ListSubjectViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
