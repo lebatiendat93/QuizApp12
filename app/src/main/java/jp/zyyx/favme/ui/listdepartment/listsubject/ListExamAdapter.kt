@@ -52,6 +52,10 @@ class ListExamAdapter : RecyclerView.Adapter<ListExamAdapter.ListExamViewHolder>
 
     inner class ListExamViewHolder : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: ListExam) {
+            binding.root.setOnClickListener {
+                onItemClickListener?.invoke(item)
+            }
+
             binding.tvFacultyName.text = item.title
             Glide.with(binding.tvSubjectName.context).load(item.image).into(binding.imgFaculty)
 

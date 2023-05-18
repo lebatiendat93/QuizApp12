@@ -84,6 +84,9 @@
     <string name="search_department">Tìm khoa</string>
     <string name="search_exam">Tìm đề</string>
     <string name="subject_and_department_name"> %1$s | %2$s</string>
+    <string name="sort_by_time">Theo thời gian </string>
+    <string name="sort_by_number_create">Số luợt tạo</string>
+    <string name="sort_by_subject">Môn học</string>
 
 
 

@@ -2,8 +2,10 @@ package jp.zyyx.favme.ui.listdepartment.listsubject
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
@@ -37,14 +39,14 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
 
     companion object {
         const val ID = "ID"
-        fun newInstance(subjectId : Int) = ListSubjectFragment().apply {
+        fun newInstance(subjectId: Int) = ListSubjectFragment().apply {
             val bundle = Bundle()
-            bundle.putInt(ID,subjectId)
+            bundle.putInt(ID, subjectId)
             arguments = bundle
         }
     }
 
-    private val subjectId : Int by lazy {
+    private val subjectId: Int by lazy {
         requireArguments().getInt(ID)
     }
 
@@ -60,7 +62,7 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
         val userId = MySharePreference.getInstance().getUserId()
         val header = MySharePreference.getInstance().getAccessToken()
 
-        viewModel.getListExam(header, userId, subjectId, 3,2, "desc")
+        viewModel.getListExam(header, userId, subjectId, 3, 2, "desc")
 
         binding.tvBack.setOnClickListener {
             onBackPressedCallback.handleOnBackPressed()
@@ -76,6 +78,10 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
 
         listExamAdapter.onItemClickListener = {
 
+        }
+
+        binding.imgSort.setOnClickListener {
+            popupMenuSort()
         }
 
 
@@ -115,5 +121,31 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
             }
         }
     }
+
+
+    private fun popupMenuSort() {
+        val popupMenu = PopupMenu(requireContext(), binding.imgSort)
+        popupMenu.menuInflater.inflate(R.menu.menu_sort, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.sort_by_time -> {
+
+                    true
+                }
+                R.id.sort_by_number_create -> {
+
+                    true
+                }
+                R.id.sort_by_subject -> {
+
+                    true
+
+                }
+                else -> false
+            }
+        }
+        popupMenu.show()
+    }
+
 
 }
