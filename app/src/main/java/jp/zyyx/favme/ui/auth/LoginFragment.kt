@@ -1,6 +1,5 @@
 package jp.zyyx.favme.ui.auth
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -11,7 +10,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
-import jp.zyyx.favme.HomeActivity
+import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
@@ -126,14 +125,14 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                             Toast.makeText(requireContext(), "Login Success", Toast.LENGTH_LONG)
                                 .show()
 
-                            val intent = Intent(requireActivity(), HomeActivity::class.java)
-                            startActivity(intent)
+//                            val intent = Intent(requireActivity(), HomeActivity::class.java)
+//                            startActivity(intent)
 
-//                            requireActivity().replaceFragment(
-//                                MainFragment(),
-//                                R.id.fragment_container,
-//                                ScreenType.AuthFlow.MainFragment.name
-//                            )
+                            requireActivity().replaceFragment(
+                                MainFragment(),
+                                R.id.fragment_container,
+                                ScreenType.HomeFlow.MainFragment.name
+                            )
                         }
                         400 -> {
                             requireContext().longToast(it.data.message.toString())

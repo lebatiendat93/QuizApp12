@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import jp.zyyx.favme.R
 import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
-import jp.zyyx.favme.databinding.ItemFacultyBinding
 import jp.zyyx.favme.databinding.ItemSuggestBinding
 import kotlin.random.Random
 
-class SearchDepartmentAdapter : RecyclerView.Adapter<SearchDepartmentAdapter.GetDepartmentViewHolder>() {
+class CategoryDepartmentAdapter : RecyclerView.Adapter<CategoryDepartmentAdapter.GetDepartmentViewHolder>() {
 
     private lateinit var binding: ItemSuggestBinding
 

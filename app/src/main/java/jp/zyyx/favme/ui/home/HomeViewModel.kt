@@ -43,6 +43,11 @@ class HomeViewModel(
     fun setDepartmentResponse(list: GetDepartmentResponses) {
         _listDepartmentResponse.value = list
     }
+//
+//    private val _text = MutableLiveData<String>().apply {
+//        value = "This is home Fragment"
+//    }
+//    val text: LiveData<String> = _text
 
     fun getDepartment(
         header: String,

@@ -65,7 +65,7 @@ class ListDepartmentFragment : BaseFragment<FragmentListDepartmentBinding>(
         listDepartmentAdapter.onClickListenerSeeAll = {
             requireActivity().replaceFragment(
                 ListSubjectFragment.newInstance(it.id),
-                R.id.fragment_container_home,
+                R.id.fragment_container,
                 ScreenType.HomeFlow.ListSubjectFragment.name
             )
 
@@ -74,7 +74,7 @@ class ListDepartmentFragment : BaseFragment<FragmentListDepartmentBinding>(
         listDepartmentAdapter.onItemClickListenerSubject = {
             requireActivity().replaceFragment(
                 ListSubjectFragment.newInstance(it.id),
-                R.id.fragment_container_home,
+                R.id.fragment_container,
                 ScreenType.HomeFlow.ListSubjectFragment.name
             )
 

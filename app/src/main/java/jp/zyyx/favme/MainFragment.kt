@@ -13,7 +13,7 @@ import jp.zyyx.favme.ui.account.AccountFragment
 import jp.zyyx.favme.ui.analysis.AnalysisFragment
 import jp.zyyx.favme.ui.home.HomeFragment
 import jp.zyyx.favme.ui.input.InputFragment
-import jp.zyyx.favme.ui.search.SearchFragment
+import jp.zyyx.favme.ui.search.CategoryFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>(
     FragmentMainBinding::inflate
@@ -35,9 +35,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(
 
         binding.fabButtonSearch.setOnClickListener {
             requireActivity().replaceFragment(
-                SearchFragment(),
-                R.id.fragment_container_home,
-                ScreenType.HomeFlow.SearchFragment.name
+                CategoryFragment(),
+                R.id.fragment_container,
+                ScreenType.HomeFlow.CategoryFragment.name
             )
         }
 

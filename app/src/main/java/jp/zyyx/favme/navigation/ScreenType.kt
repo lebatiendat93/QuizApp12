@@ -69,9 +69,15 @@ sealed class ScreenType : Parcelable {
 
     sealed class HomeFlow : ScreenType() {
         @Parcelize
-        object SearchFragment : HomeFlow() {
+        object CategoryFragment : HomeFlow() {
             override val name: String
-                get() = "Search Fragment"
+                get() = "Category Fragment"
+        }
+
+        @Parcelize
+        object SearchCategoryFragment : HomeFlow() {
+            override val name: String
+                get() = "Search Category Fragment"
         }
 
         @Parcelize

@@ -1,13 +1,11 @@
 package jp.zyyx.favme.ui.splash
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import jp.zyyx.favme.HomeActivity
+import jp.zyyx.favme.MainFragment
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
@@ -42,13 +40,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(
                     MySharePreference.getInstance().setFirstStartApp(true)
                 } else {
                     if (MySharePreference.isLogin()) {
-//                        requireActivity().replaceFragment(
-//                            MainFragment(), R.id.fragment_container,
-//                            ScreenType.AuthFlow.MainFragment.name
-//                        )
+                        requireActivity().replaceFragment(
+                            MainFragment(), R.id.fragment_container,
+                            ScreenType.HomeFlow.MainFragment.name
+                        )
 
-                        val intent = Intent(requireActivity(), HomeActivity::class.java)
-                        startActivity(intent)
                     } else {
                         requireActivity().replaceFragment(
                             LoginFragment(), R.id.fragment_container,

@@ -7,14 +7,14 @@ import kotlinx.parcelize.Parcelize
 @Keep
 data class LoginResponses(
     val statusCode: Int,
-    val result: Result,
+    val result: ResultLogin,
     val message: String?= null
 ): Parcelable
 
 
 @Parcelize
 @Keep
-data class Result(
+data class ResultLogin(
     val access_token: String,
     val user_id: Int,
     val status: Int? = null ,

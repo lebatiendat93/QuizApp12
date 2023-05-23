@@ -19,11 +19,11 @@ import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.ui.home.HomeViewModel
 
-class SearchFragment : BaseFragment<FragmentSearchBinding>(
+class CategoryFragment : BaseFragment<FragmentSearchBinding>(
     FragmentSearchBinding::inflate
 ) {
 
-    private lateinit var searchDepartmentAdapter: SearchDepartmentAdapter
+    private lateinit var categoryDepartmentAdapter: CategoryDepartmentAdapter
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory.create() }
 
     override fun getFragmentBinding(
@@ -52,8 +52,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
         
         binding.rcvItemSuggest.apply {
             layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
-            searchDepartmentAdapter = SearchDepartmentAdapter()
-            adapter = searchDepartmentAdapter
+            categoryDepartmentAdapter = CategoryDepartmentAdapter()
+            adapter = categoryDepartmentAdapter
             addItemDecoration(GridSpacingItemDecoration(resources.getDimensionPixelOffset(R.dimen._12dp)))
         }
 
@@ -61,7 +61,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
         val header = MySharePreference.getInstance().getAccessToken()
         viewModel.getDepartment(header, userId, "Khoa")
 
-        searchDepartmentAdapter.differ.submitList(viewModel.listDepartmentResponse.value?.result)
+        categoryDepartmentAdapter.differ.submitList(viewModel.listDepartmentResponse.value?.result)
     }
 
     private fun handleObservable() {
@@ -76,7 +76,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
-                            searchDepartmentAdapter.differ.submitList(it.data.result)
+                            categoryDepartmentAdapter.differ.submitList(it.data.result)
                         }
                         400 -> {
                             Toast.makeText(requireContext(), it.data.message, Toast.LENGTH_LONG)

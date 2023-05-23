@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
-import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
 import jp.zyyx.favme.data.remote.responses.home.ResultGetDepartment
 import jp.zyyx.favme.databinding.FragmentHomeBinding
-import jp.zyyx.favme.extension.LinearSpacingItemDecoration
-import jp.zyyx.favme.extension.popBackStack
-import jp.zyyx.favme.extension.replaceFragment
+import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
 import jp.zyyx.favme.navigation.ScreenType
@@ -53,6 +50,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     }
 
     private fun initView() {
+        binding.vUnderlineSystemClick.visible()
+
         binding.rcvDepartmentList.apply {
             layoutManager = LinearLayoutManager(context)
             getDepartmentAdapter = GetDepartmentAdapter().apply {
@@ -68,17 +67,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         viewModel.getDepartment(header, userId, "Khoa")
 
         binding.tvSystem.setOnClickListener {
-//            handleText()
-            val listDepartmentSystem =
-                viewModel.listDepartmentResponse.value?.result?.filter { it.is_exam_by_system }
+            binding.vUnderlineUserClick.invisible()
+            binding.vUnderlineSystemClick.visible()
+            binding.tvUser.alpha = 0.3f
+            binding.tvSystem.alpha = 1f
+            val listDepartmentSystem = resultGetDepartment.filter { it.is_exam_by_system }
             getDepartmentAdapter.differ.submitList(listDepartmentSystem)
         }
 
         binding.tvUser.setOnClickListener {
-//            handleText()
-
-            val listDepartmentUser = viewModel.listDepartmentResponse.value.let { it?.result }
-            getDepartmentAdapter.differ.submitList(listDepartmentUser)
+            binding.vUnderlineUserClick.visible()
+            binding.vUnderlineSystemClick.invisible()
+            binding.tvSystem.alpha = 0.3f
+            binding.tvUser.alpha = 1f
+            getDepartmentAdapter.differ.submitList(resultGetDepartment)
         }
 
         getDepartmentAdapter.onItemClickListener = {
@@ -89,7 +91,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         binding.tvSeeAll.setOnClickListener {
             requireActivity().replaceFragment(
                 ListDepartmentFragment(),
-                R.id.fragment_container_home,
+                R.id.fragment_container,
                 ScreenType.HomeFlow.ListDepartmentFragment.name
             )
         }
@@ -109,8 +111,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
+                            resultGetDepartment = it.data.result
+
                             val listDepartmentSystem =
-                                it.data.result.filter { it.is_exam_by_system }
+                                resultGetDepartment.filter { it.is_exam_by_system }
                             getDepartmentAdapter.differ.submitList(listDepartmentSystem)
                             viewModel.setDepartmentResponse(it.data)
                         }
@@ -133,30 +137,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
             }
         }
     }
-
-    private fun handleText() {
-        val spannableStringSystem = SpannableString(binding.tvSystem.text)
-        val spannableStringUser = SpannableString(binding.tvUser.text)
-        binding.tvSystem.setTextIsSelectable(true)
-        spannableStringSystem.setSpan(UnderlineSpan(), 0, spannableStringSystem.length, 0)
-        binding.tvSystem.setTextColor(requireContext().getColor(R.color.black))
-
-        if (binding.tvUser.isSelected) {
-            binding.tvUser.setTextIsSelectable(true)
-
-
-        } else {
-
-        }
-
-    }
-
-//    {
-//        spannableStringSystem.setSpan(UnderlineSpan(), 0 , spannableStringSystem.length,0 )
-//        binding.tvSystem.setTextColor(requireContext().getColor(R.color.black))
-//    } else {
-//        spannableStringSystem.setSpan(UnderlineSpan(), 0 , 0,0 )
-//        binding.tvSystem.setTextColor(requireContext().getColor(R.color.color_gray3))
-//    }
 
 }

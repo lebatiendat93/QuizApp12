@@ -165,6 +165,7 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>(
                     when (it.data.statusCode) {
                         200 -> {
                             requireContext().longToast("Register Success")
+
                             requireActivity().replaceFragment(
                                 LoginFragment(),
                                 R.id.fragment_container,
