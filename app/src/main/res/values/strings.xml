@@ -73,8 +73,8 @@
     <string name="notice_request_input_full_information">Yêu cầu nhập đầy đủ thông tin bên trên</string>
     <string name="notice_please_enter_phone_number">Yêu cầu nhập số điện thoại đủ 10 số</string>
     <string name="notice_please_enter_birthday">Yêu cầu nhập ngày sinh của bạn</string>
-    <string name="notice_pass_must_than_6_word">Mật khẩu phải dài hơn 6 ký tự và có ít nhất một chữ in hoa</string>
-    <string name="notice_request_enter_correct_format_email">Yêu cầu nhập đúng định đang của email</string>
+    <string name="notice_pass_must_than_6_word">Mật khẩu phải dài hơn 6 ký tự và có ít nhất một chữ in hoa exam: Abcd1234</string>
+    <string name="notice_request_enter_correct_format_email">Yêu cầu nhập đúng định đang của email exam : dat@gmail.com</string>
     <string name="notice_request_enter_name">Yêu cầu nhập tên đăng ký</string>
     <string name="notice_pass_and_confirm_pass_do_not_same">Mật khẩu và mật khẩu xác nhận không giống nhau</string>
     <string name="subject_list">Danh sách môn</string>

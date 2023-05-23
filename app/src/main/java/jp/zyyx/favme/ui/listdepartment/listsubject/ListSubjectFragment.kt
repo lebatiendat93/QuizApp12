@@ -99,6 +99,7 @@ class ListSubjectFragment : BaseFragment<FragmentListSubjectBinding>(
                 is Resource.Success -> {
                     when (it.data.statusCode) {
                         200 -> {
+                            binding.tvDepartmentAndSubjectName.text = String.format(getString(R.string.subject_and_department_name, it.data.result.title, it.data.result.department_title))
                             listExamAdapter.differ.submitList(it.data.result.list_exam)
 
                         }

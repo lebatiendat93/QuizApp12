@@ -51,6 +51,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
 
     private fun initView() {
         binding.vUnderlineSystemClick.visible()
+        binding.tvUserName.text = MySharePreference.getInstance().getUserName()
 
         binding.rcvDepartmentList.apply {
             layoutManager = LinearLayoutManager(context)

@@ -11,6 +11,7 @@ object MySharePreference {
     private const val SAVE_USER = "SAVE_USER"
     private const val FIRST_START_APP = "FIRST_START_APP"
     private const val USER_ID = "USER_ID"
+    private const val USER_NAME = "USER_NAME"
 
     fun init(context: Context) {
         instance = MySharePreference
@@ -51,6 +52,17 @@ object MySharePreference {
     fun getUserId(): Int {
         return sharedPreferences.getInt(USER_ID, 0)
     }
+
+    fun setUserName(userName: String) {
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.putString(USER_NAME, userName)
+        editor.apply()
+    }
+
+    fun getUserName(): String {
+        return sharedPreferences.getString(USER_NAME, "") ?: ""
+    }
+
 
     fun setSavePass(currentNameUser: String) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()

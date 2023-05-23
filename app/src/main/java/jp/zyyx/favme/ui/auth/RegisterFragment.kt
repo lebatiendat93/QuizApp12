@@ -13,6 +13,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
+import jp.zyyx.favme.data.local.MySharePreference
 import jp.zyyx.favme.databinding.FragmentCreateAccountBinding
 import jp.zyyx.favme.extension.*
 import jp.zyyx.favme.model.Resource
@@ -296,6 +297,7 @@ class RegisterFragment : BaseFragment<FragmentCreateAccountBinding>(
                                 binding.tvNoticeEnterConfirmPass.visible()
                                 return
                             } else {
+                                MySharePreference.getInstance().setUserName(name)
                                 viewModel.register(email, name, phone, birthday, pass)
                             }
                         }
