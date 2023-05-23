@@ -1,4 +1,4 @@
-package jp.zyyx.favme.ui.search
+package jp.zyyx.favme.ui.category
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,15 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import jp.zyyx.favme.R
 import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.data.local.MySharePreference
+import jp.zyyx.favme.databinding.FragmentCategoryBinding
 import jp.zyyx.favme.databinding.FragmentSearchBinding
 import jp.zyyx.favme.extension.GridSpacingItemDecoration
 import jp.zyyx.favme.extension.popBackStack
+import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.model.Resource
 import jp.zyyx.favme.model.ViewModelFactory
+import jp.zyyx.favme.navigation.ScreenType
+import jp.zyyx.favme.ui.category.searchcategory.SearchFragment
 import jp.zyyx.favme.ui.home.HomeViewModel
 
-class CategoryFragment : BaseFragment<FragmentSearchBinding>(
-    FragmentSearchBinding::inflate
+class CategoryFragment : BaseFragment<FragmentCategoryBinding>(
+    FragmentCategoryBinding::inflate
 ) {
 
     private lateinit var categoryDepartmentAdapter: CategoryDepartmentAdapter
@@ -29,7 +33,7 @@ class CategoryFragment : BaseFragment<FragmentSearchBinding>(
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentSearchBinding.inflate(layoutInflater, container, false)
+    ) = FragmentCategoryBinding.inflate(layoutInflater, container, false)
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
@@ -49,7 +53,15 @@ class CategoryFragment : BaseFragment<FragmentSearchBinding>(
         binding.tvBack.setOnClickListener {
             onBackPressedCallback.handleOnBackPressed()
         }
-        
+
+        binding.layoutSearch.setOnClickListener {
+            requireActivity().replaceFragment(
+                SearchFragment(),
+                R.id.fragment_container,
+                ScreenType.HomeFlow.SearchCategoryFragment.name
+            )
+        }
+
         binding.rcvItemSuggest.apply {
             layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
             categoryDepartmentAdapter = CategoryDepartmentAdapter()

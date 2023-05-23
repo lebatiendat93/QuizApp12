@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:text="@string/tk_32_title"
+            android:text="@string/tk_33_title"
             style="@style/style_title_regular_size_24"
             android:textColor="@color/white"
             android:gravity="center"
@@ -37,8 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/search_view"
@@ -58,23 +56,39 @@
         android:padding="24dp"
         android:layout_marginTop="24dp"
         android:layout_below="@id/search_view"
-        android:background="@drawable/bg_white_top_r32"
+        android:background="@drawable/bg_screen_search"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/style_text_medium_size_20"
-            android:textColor="@color/black"
-            android:layout_marginTop="3dp"
-            android:text="@string/tk_32_suggestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/style_text_medium_size_20"
+                android:textColor="@color/black"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                android:text="@string/tk_33_last_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/style_text_medium_size_14"
+                android:textColor="@color/color_primary"
+                android:layout_marginTop="3dp"
+                android:text="@string/tk_33_remove_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_item_suggest"
-            tools:listitem="@layout/item_suggest"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_subject"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

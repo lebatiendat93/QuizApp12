@@ -2,19 +2,13 @@ package jp.zyyx.favme.model
 
 import androidx.annotation.Keep
 import jp.zyyx.favme.data.remote.requestparam.auth.ForgotPassRequest
-import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
-import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
 import jp.zyyx.favme.data.remote.requestparam.auth.LoginRequest
 import jp.zyyx.favme.data.remote.requestparam.auth.RegisterRequest
-import jp.zyyx.favme.data.remote.requestparam.home.ExamDetailRequest
-import jp.zyyx.favme.data.remote.requestparam.home.ExamRequest
+import jp.zyyx.favme.data.remote.requestparam.home.*
 import jp.zyyx.favme.data.remote.responses.auth.ForgotPassResponse
-import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
 import jp.zyyx.favme.data.remote.responses.auth.LoginResponses
 import jp.zyyx.favme.data.remote.responses.auth.RegisterResponses
-import jp.zyyx.favme.data.remote.responses.home.ExamDetailResponses
-import jp.zyyx.favme.data.remote.responses.home.ExamResponses
+import jp.zyyx.favme.data.remote.responses.home.*
 import jp.zyyx.favme.model.api.APIClientFactory
 import jp.zyyx.favme.model.api.OkHttpClientFactory
 import retrofit2.http.Body
@@ -85,6 +79,12 @@ interface RemoteDataApi {
         @Header ("Authorization") header: String,
         @Body examDetailRequest : ExamDetailRequest
     ): ExamDetailResponses
+
+    @POST("/searchSubject")
+    suspend fun searchSubject(
+        @Header ("Authorization") header: String,
+        @Body searchSubjectRequest : SearchSubjectRequest
+    ): SearchSubjectResponses
 
 
 }

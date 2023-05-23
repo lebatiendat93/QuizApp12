@@ -7,27 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import jp.zyyx.favme.R
+import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentIntroduceBinding
 import jp.zyyx.favme.extension.replaceFragment
 import jp.zyyx.favme.navigation.ScreenType
 import jp.zyyx.favme.ui.auth.LoginOrRegisterFragment
 
-class IntroduceFragment : Fragment() {
+class IntroduceFragment : BaseFragment<FragmentIntroduceBinding>(
+    FragmentIntroduceBinding::inflate
+) {
 
-    private var _binding : FragmentIntroduceBinding?= null
-    private val binding get() = _binding!!
 
     private lateinit var imageList: ArrayList<Int>
     private lateinit var sliderAdapter: SliderImageSplashAdapter
 
-    override fun onCreateView(
+    override fun getFragmentBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentIntroduceBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+        container: ViewGroup?
+    )= FragmentIntroduceBinding.inflate(layoutInflater, container, false)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -64,10 +62,5 @@ class IntroduceFragment : Fragment() {
 
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

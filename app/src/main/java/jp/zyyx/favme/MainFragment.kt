@@ -13,7 +13,7 @@ import jp.zyyx.favme.ui.account.AccountFragment
 import jp.zyyx.favme.ui.analysis.AnalysisFragment
 import jp.zyyx.favme.ui.home.HomeFragment
 import jp.zyyx.favme.ui.input.InputFragment
-import jp.zyyx.favme.ui.search.CategoryFragment
+import jp.zyyx.favme.ui.category.CategoryFragment
 
 class MainFragment : BaseFragment<FragmentMainBinding>(
     FragmentMainBinding::inflate

@@ -1,4 +1,4 @@
-package jp.zyyx.favme.ui.search
+package jp.zyyx.favme.ui.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -40,6 +40,11 @@ class HomeViewModel(
     val getExamDetail: LiveData<Resource<ExamDetailResponses>>
         get() = _getExamDetail
 
+    private val _searchSubject: MutableLiveData<Resource<SearchSubjectResponses>> =
+        MutableLiveData()
+    val searchSubject: LiveData<Resource<SearchSubjectResponses>>
+        get() = _searchSubject
+
     fun setDepartmentResponse(list: GetDepartmentResponses) {
         _listDepartmentResponse.value = list
     }
@@ -106,6 +111,23 @@ class HomeViewModel(
             }
             .collect {
                 _getExamDetail.value = Resource.Success(it)
+            }
+    }
+
+    // API nay ko biet dung de search cho item nao
+    fun searchSubject(
+        header: String,
+        userId: Int,
+        departmentId: Int,
+        keyWord: String,
+    ) = viewModelScope.launch {
+        repository.searchSubject(header, userId, departmentId,keyWord)
+            .onStart { Resource.Loading }
+            .catch { error ->
+                _searchSubject.value = Resource.Error(error as ModelException)
+            }
+            .collect {
+                _searchSubject.value = Resource.Success(it)
             }
     }
 

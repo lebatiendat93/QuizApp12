@@ -14,7 +14,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
 ) {
 
 
-
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -34,6 +33,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(
     }
 
     private fun initView() {
+
 
 
     }

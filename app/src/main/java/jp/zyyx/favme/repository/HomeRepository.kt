@@ -1,14 +1,8 @@
 package jp.zyyx.favme.repository
 
 import jp.zyyx.favme.base.Repository
-import jp.zyyx.favme.data.remote.requestparam.home.ExamDetailRequest
-import jp.zyyx.favme.data.remote.requestparam.home.ExamRequest
-import jp.zyyx.favme.data.remote.requestparam.home.GetDepartmentRequest
-import jp.zyyx.favme.data.remote.requestparam.home.ListDepartmentInfoRequest
-import jp.zyyx.favme.data.remote.responses.home.ExamDetailResponses
-import jp.zyyx.favme.data.remote.responses.home.ExamResponses
-import jp.zyyx.favme.data.remote.responses.home.GetDepartmentResponses
-import jp.zyyx.favme.data.remote.responses.home.ListDepartmentInfoResponses
+import jp.zyyx.favme.data.remote.requestparam.home.*
+import jp.zyyx.favme.data.remote.responses.home.*
 import jp.zyyx.favme.model.RemoteDataApi
 import jp.zyyx.favme.model.catchCommonErrors
 import kotlinx.coroutines.Dispatchers
@@ -82,6 +76,24 @@ class HomeRepository(
             try {
                 val examDetailRequest = ExamDetailRequest(userId, exam_id)
                 val responses = api.getExamDetail(header, examDetailRequest)
+                emit(responses)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                e.catchCommonErrors()
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun searchSubject(
+        header: String,
+        id: Int,
+        departmentId: Int,
+        keyWord: String,
+    ): Flow<SearchSubjectResponses> {
+        return flow {
+            try {
+                val searchSubjectRequest = SearchSubjectRequest(id, departmentId,keyWord)
+                val responses = api.searchSubject(header, searchSubjectRequest)
                 emit(responses)
             } catch (e: Exception) {
                 e.printStackTrace()
