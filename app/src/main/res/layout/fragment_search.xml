@@ -38,19 +38,18 @@
             android:layout_height="wrap_content"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatEditText
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view"
-        android:layout_marginTop="16dp"
         android:paddingVertical="@dimen/_12dp"
-        android:drawableStart="@drawable/ic_search"
-        android:paddingLeft="@dimen/_12dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:searchIcon="@drawable/ic_search"
         android:drawablePadding="@dimen/_12dp"
-        android:layout_below="@id/layout_toolbar"
-        android:hint="@string/tk_32_search_hint"
         android:layout_marginHorizontal="24dp"
         android:background="@drawable/bg_search_r20"
+        android:layout_below="@id/layout_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:padding="24dp"

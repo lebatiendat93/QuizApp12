@@ -5,21 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import jp.zyyx.favme.base.BaseFragment
 import jp.zyyx.favme.databinding.FragmentAnalysisBinding
 
-class AnalysisFragment : Fragment() {
+class AnalysisFragment : BaseFragment<FragmentAnalysisBinding>(
+    FragmentAnalysisBinding::inflate
+) {
 
-    private var _binding: FragmentAnalysisBinding? = null
-    private val binding get() = _binding!!
 
-    override fun onCreateView(
+    override fun getFragmentBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAnalysisBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+        container: ViewGroup?
+    ) = FragmentAnalysisBinding.inflate(layoutInflater, container, false)
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
