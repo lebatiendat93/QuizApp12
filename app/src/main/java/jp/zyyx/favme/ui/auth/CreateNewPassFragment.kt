@@ -52,8 +52,6 @@ class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(Fragmen
 
     private fun initView() {
         handleShowOrHidePass()
-
-
     }
 
     private fun handleObservable() {
