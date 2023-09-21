@@ -63,7 +63,7 @@ class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(Fragmen
 //                    binding.pgLoading.visible()
                 }
                 is Resource.Error -> {
-//                    binding.pgLoading.gone()
+                    binding.pgLoading.gone()
                 }
                 is Resource.Success -> {
                     binding.pgLoading.gone()
