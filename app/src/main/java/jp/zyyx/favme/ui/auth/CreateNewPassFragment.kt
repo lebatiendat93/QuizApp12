@@ -55,41 +55,41 @@ class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(Fragmen
     }
 
     private fun handleObservable() {
-//        viewModel.login.observe(viewLifecycleOwner) {
-//            when (it) {
-//                is Resource.Loading -> {
-//                    binding.pgLoading.visible()
-//                }
-//                is Resource.Error -> {
-//                    binding.pgLoading.gone()
-//                }
-//                is Resource.Success -> {
-//                    binding.pgLoading.gone()
-//                    when (it.data.statusCode) {
-//                        200 -> {
-//
-//                        }
-//                        400 -> {
-//                            requireContext().longToast(it.data.message.toString())
-//                        }
-//
-//                        401 -> {
-//                            requireContext().longToast(it.data.message.toString())
-//                        }
-//
-//                        500 -> {
-//                            requireContext().longToast(it.data.message.toString())
-//                        }
-//                    }
-//
-//                }
-//                else -> {
-//                    binding.pgLoading.gone()
-//                }
-//
-//            }
-//
-//        }
+        viewModel.login.observe(viewLifecycleOwner) {
+            when (it) {
+                is Resource.Loading -> {
+                    binding.pgLoading.visible()
+                }
+                is Resource.Error -> {
+                    binding.pgLoading.gone()
+                }
+                is Resource.Success -> {
+                    binding.pgLoading.gone()
+                    when (it.data.statusCode) {
+                        200 -> {
+
+                        }
+                        400 -> {
+                            requireContext().longToast(it.data.message.toString())
+                        }
+
+                        401 -> {
+                            requireContext().longToast(it.data.message.toString())
+                        }
+
+                        500 -> {
+                            requireContext().longToast(it.data.message.toString())
+                        }
+                    }
+
+                }
+                else -> {
+                    binding.pgLoading.gone()
+                }
+
+            }
+
+        }
     }
 
     private fun handleShowOrHidePass() {
