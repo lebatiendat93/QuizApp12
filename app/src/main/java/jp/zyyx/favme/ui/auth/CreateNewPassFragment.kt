@@ -60,7 +60,7 @@ class CreateNewPassFragment : BaseFragment<FragmentCreateNewPassBinding>(Fragmen
         viewModel.login.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> {
-//                    binding.pgLoading.visible()
+                    binding.pgLoading.visible()
                 }
                 is Resource.Error -> {
                     binding.pgLoading.gone()

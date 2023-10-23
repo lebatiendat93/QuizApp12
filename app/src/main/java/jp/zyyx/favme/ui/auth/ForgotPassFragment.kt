@@ -30,8 +30,8 @@ class ForgotPassFragment : BaseFragment<FragmentForgotPassBinding>(FragmentForgo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        initView()
-//        handleObservable()
+        initView()
+        handleObservable()
 
     }
 
